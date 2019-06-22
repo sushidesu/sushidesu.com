@@ -1,21 +1,12 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="site-all">
+    <nav-bar class="nav-bar" />
+    <nuxt class="main" />
+    <menu-bar class="menu-bar"/>
   </div>
 </template>
 
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
 
 *,
 *:before,
@@ -24,32 +15,52 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.menu-bar {
+  padding: 20px;
+  border-radius: 0 0px 14px 14px;
+  background-color: rgba(242, 255, 252, 0.94);
+  border-top: 1px solid var(--main);
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+html {
+  background-color: var(--main);
 }
 </style>
+
+<style scoped>
+.site-all {
+  background-color: var(--white);
+  border-radius: 14px;
+  margin: 8px 14px;
+  padding-bottom: 2px;
+  min-height: 98vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-bar {
+  background-color: transparent;
+}
+
+.main {
+  flex: 1;
+}
+
+.menu-bar {
+  position: sticky;
+  bottom: 0;
+}
+
+</style>
+
+<script>
+import NavBar from '~/components/NavBar.vue';
+import MenuBar from '~/components/MenuBar.vue';
+
+export default {
+  components: {
+    NavBar,
+    MenuBar
+  }
+}
+</script>
