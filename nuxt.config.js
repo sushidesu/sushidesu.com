@@ -16,7 +16,7 @@ export default {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ],
     script: [
       { src: 'https://unpkg.com/zdog@1/dist/zdog.dist.min.js' }
