@@ -51,7 +51,12 @@ export default {
   */
   modules: [
     '@nuxtjs/bulma',
-    ['@nuxtjs/google-analytics', { id: process.env.GOOGLE_TRACKING_ID || "null" }]
+    [
+      '@nuxtjs/google-gtag',
+      {
+        id: process.env.GAID
+      }
+    ]
   ],
 
   /*
