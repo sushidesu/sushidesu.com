@@ -6,6 +6,7 @@ export const makeUsagi = (selector, zoom) => {
   const illo = new Zdog.Illustration({
     element: selector,
     zoom: zoom,
+    dragRotate: true,
     translate: { y: 40 }
   })
 
@@ -63,7 +64,12 @@ export const makeUsagi = (selector, zoom) => {
     translate: { y: 10, z: 90 }
   })
 
-  illo.updateRenderGraph()
+  const animate = () => {
+    illo.updateRenderGraph()
+    requestAnimationFrame(animate)
+  }
+
+  animate()
 
   return illo
 }

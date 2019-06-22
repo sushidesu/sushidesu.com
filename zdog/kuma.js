@@ -4,6 +4,7 @@ export const makeKuma = (selector, zoom) => {
   const illo = new Zdog.Illustration({
     element: selector,
     zoom: zoom,
+    dragRotate: true,
     translate: { y: 10 }
   })
 
@@ -76,7 +77,12 @@ export const makeKuma = (selector, zoom) => {
     translate: { y: 10 }
   })
 
-  illo.updateRenderGraph()
+  const animate = () => {
+    illo.updateRenderGraph()
+    requestAnimationFrame(animate)
+  }
+
+  animate()
 
   return illo
 }
