@@ -17,6 +17,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://unpkg.com/zdog@1/dist/zdog.dist.min.js' }
     ]
   },
 
@@ -34,6 +37,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/common/color.css'
   ],
 
   /*
