@@ -20,6 +20,11 @@
   border-radius: 0 0px 14px 14px;
   background-color: rgba(242, 255, 252, 0.94);
   border-top: 1px solid var(--main);
+  margin: 0;
+}
+
+.columns:last-child {
+  margin-bottom: 0;
 }
 
 html {

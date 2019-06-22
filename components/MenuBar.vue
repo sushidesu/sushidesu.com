@@ -1,17 +1,33 @@
 <template>
-  <div class="level is-mobile">
-    <nuxt-link to="/" class="level-item item button is-primary is-outlined">
-      <canvas class="icon neko" width="40" height="40"></canvas><span class="lnk">Home</span>
-    </nuxt-link>
-    <nuxt-link to="/about" class="level-item item button is-primary is-outlined">
-      <canvas class="icon kuma" width="40" height="40"></canvas><span class="lnk">About</span>
-    </nuxt-link>
-    <nuxt-link to="/illustration" class="level-item item button is-primary is-outlined">
-      <canvas class="icon usagi" width="40" height="40"></canvas><span class="lnk">Illustration</span>
-    </nuxt-link>
-    <nuxt-link to="/contact" class="level-item item button is-primary is-outlined">
-      <canvas class="icon sakana" width="40" height="40"></canvas><span class="lnk">Contact</span>
-    </nuxt-link>
+  <div class="columns parent">
+    <div class="column parent">
+      <div class="columns is-mobile">
+        <div class="column">
+          <nuxt-link to="/" class="item button is-primary is-outlined">
+            <canvas class="icon neko" width="40" height="40"></canvas><span class="lnk">Home</span>
+          </nuxt-link>
+        </div>
+        <div class="column">
+          <nuxt-link to="/about" class="item button is-primary is-outlined">
+            <canvas class="icon kuma" width="40" height="40"></canvas><span class="lnk">About</span>
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
+    <div class="column parent">
+      <div class="columns is-mobile">
+        <div class="column">
+          <nuxt-link to="/illustration" class="item button is-primary is-outlined">
+            <canvas class="icon usagi" width="40" height="40"></canvas><span class="lnk">Illustration</span>
+          </nuxt-link>
+        </div>
+        <div class="column">
+          <nuxt-link to="/contact" class="item button is-primary is-outlined">
+            <canvas class="icon sakana" width="40" height="40"></canvas><span class="lnk">Contact</span>
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,18 +35,33 @@
 .item {
   height: 60px;
   border-radius: 12px;
-  margin-left: 4px;
-  margin-right: 4px;
+  width: 100%;
+}
+
+.column.parent {
+  padding-bottom: 0;
+}
+
+.columns.parent {
+  padding: 0.4rem 0.4rem 0.2rem 0.4rem;
 }
 
 .lnk {
   font-weight: bold;
+  font-size: 0.8rem;
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 }
+
+@media all and (min-width: 1024px) {
+  .lnk {
+    font-size: 1rem;
+  }
+}
+
 </style>
 
 <script>

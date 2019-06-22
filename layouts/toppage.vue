@@ -42,7 +42,7 @@
   left: 0;
   right: 0;
   padding: 20px;
-  margin: 0 14px;
+  margin: 8px 14px;
   z-index: 3;
 }
 </style>
