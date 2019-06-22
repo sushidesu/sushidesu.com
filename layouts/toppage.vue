@@ -36,12 +36,11 @@
   background-color: var(--white);
 }
 
-.menu-bar {
+.menu-bar.columns {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px;
   margin: 8px 14px;
   z-index: 3;
 }
