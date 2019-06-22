@@ -1,18 +1,31 @@
 <template>
   <div>
-    <h2>Test</h2>
-    <ul>
-      <li v-for="item in items" :key="item.sys.id">{{ item.fields.title }}</li>
-    </ul>
+    <neko  class="main" />
   </div>
 </template>
 
+<style scoped>
+  .main {
+    width: 320px;
+    height: 320px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+  }
+</style>
+
+
 <script>
-import { fetchEntries } from "@/api";
+import Neko from '~/components/Neko.vue'
 
 export default {
-  async asyncData() {
-    return await fetchEntries('post')
-  }
+  components: {
+    Neko
+  },
+  layout: 'toppage'
 }
 </script>
