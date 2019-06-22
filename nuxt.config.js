@@ -50,7 +50,8 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/bulma'
+    '@nuxtjs/bulma',
+    ['@nuxtjs/google-analytics', { id: process.env.GOOGLE_TRACKING_ID }]
   ],
 
   /*
