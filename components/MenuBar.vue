@@ -1,33 +1,28 @@
 <template>
-  <div class="columns parent">
-    <div class="column parent">
-      <div class="columns is-mobile">
-        <div class="column">
+  <div class="level is-mobile">
+
+        <div class="level-item has-text-centered">
           <nuxt-link to="/" class="item button is-primary is-outlined">
-            <canvas class="icon neko" width="40" height="40"></canvas><span class="lnk">Home</span>
+            <canvas class="neko" width="40" height="40"></canvas><span class="lnk">Home</span>
           </nuxt-link>
         </div>
-        <div class="column">
+        <div class="level-item">
           <nuxt-link to="/about" class="item button is-primary is-outlined">
-            <canvas class="icon kuma" width="40" height="40"></canvas><span class="lnk">About</span>
+            <canvas class="kuma" width="40" height="40"></canvas><span class="lnk">About</span>
           </nuxt-link>
         </div>
-      </div>
-    </div>
-    <div class="column parent">
-      <div class="columns is-mobile">
-        <div class="column">
+
+        <div class="level-item">
           <nuxt-link to="/illustration" class="item button is-primary is-outlined">
-            <canvas class="icon usagi" width="40" height="40"></canvas><span class="lnk">Illustration</span>
+            <canvas class="usagi" width="40" height="40"></canvas><span class="lnk">Illust<span class="is-hidden-tablet">.</span><span class="is-hidden-mobile">ration</span></span>
           </nuxt-link>
         </div>
-        <div class="column">
+        <div class="level-item">
           <nuxt-link to="/contact" class="item button is-primary is-outlined">
-            <canvas class="icon sakana" width="40" height="40"></canvas><span class="lnk">Contact</span>
+            <canvas class="sakana" width="40" height="40"></canvas><span class="lnk">Contact</span>
           </nuxt-link>
         </div>
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -38,25 +33,33 @@
   width: 100%;
 }
 
-.column.parent {
-  padding-bottom: 0;
-}
-
-.columns.parent {
-  padding: 0.4rem 0.4rem 0.2rem 0.4rem;
-}
-
 .lnk {
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .icon {
   width: 40px;
   height: 40px;
 }
+@media all and (max-width: 768px) {
+  .level-item .item.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-@media all and (min-width: 1024px) {
+  .level.is-mobile .level-item:not(:last-child) {
+    margin-right: 0.2rem;
+  }
+
+  .menu-bar {
+    padding: 10px 4px;
+  }
+}
+
+@media all and (min-width: 769px) {
   .lnk {
     font-size: 1rem;
   }

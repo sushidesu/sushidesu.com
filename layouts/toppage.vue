@@ -36,7 +36,7 @@
   background-color: var(--white);
 }
 
-.menu-bar.columns {
+.menu-bar.level {
   position: absolute;
   bottom: 0;
   left: 0;
