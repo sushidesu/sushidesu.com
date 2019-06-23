@@ -75,10 +75,10 @@ import { makeSakana } from '~/zdog/sakana.js'
 
 export default {
   mounted() {
-    makeNeko('.neko', 0.14)
-    makeKuma('.kuma', 0.18)
-    makeUsagi('.usagi', 0.14)
-    makeSakana('.sakana', 0.14)
+    makeNeko('.neko', 0.14, false)
+    makeKuma('.kuma', 0.18, false)
+    makeUsagi('.usagi', 0.14, false)
+    makeSakana('.sakana', 0.14, false)
   }
 }
 </script>

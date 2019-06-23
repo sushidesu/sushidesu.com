@@ -14,7 +14,12 @@ import { makeNeko } from '~/zdog/neko.js'
 
 export default {
   mounted() {
-    makeNeko('.neko-canvas', 1)
+    const neko = makeNeko('.neko-canvas', 1, true)
+    const animate = () => {
+      neko.updateRenderGraph()
+      requestAnimationFrame(animate)
+    }
+    animate()
 }
 }
 </script>
