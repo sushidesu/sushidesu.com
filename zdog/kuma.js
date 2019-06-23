@@ -1,10 +1,10 @@
 import { colors } from '~/common/color.js'
 
-export const makeKuma = (selector, zoom) => {
+export const makeKuma = (selector, zoom, drag) => {
   const illo = new Zdog.Illustration({
     element: selector,
     zoom: zoom,
-    dragRotate: true,
+    dragRotate: drag,
     translate: { y: 10 }
   })
 
@@ -77,12 +77,7 @@ export const makeKuma = (selector, zoom) => {
     translate: { y: 10 }
   })
 
-  const animate = () => {
-    illo.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
-
-  animate()
+  illo.updateRenderGraph()
 
   return illo
 }

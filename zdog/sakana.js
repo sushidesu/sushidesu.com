@@ -1,11 +1,11 @@
 import { colors } from '~/common/color.js'
 
-export const makeSakana = (selector, zoom) => {
+export const makeSakana = (selector, zoom, drag) => {
   const illo = new Zdog.Illustration({
     element: selector,
     zoom: zoom,
     translate: { x: -30 },
-    dragRotate: true
+    dragRotate: drag
   })
 
   const body = new Zdog.Group({
@@ -84,11 +84,7 @@ export const makeSakana = (selector, zoom) => {
     translate: { x: -4 }
   })
 
-  const animate = () => {
-    illo.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
+  illo.updateRenderGraph()
 
-  animate()
   return illo
 }
