@@ -1,10 +1,10 @@
 import { colors } from '~/common/color.js'
 
-export const makeNeko = (selector, zoom) => {
+export const makeNeko = (selector, zoom, drag) => {
   const illo = new Zdog.Illustration({
     element: selector,
     zoom: zoom,
-    dragRotate: true
+    dragRotate: drag
   })
 
   const main = colors.body
@@ -94,12 +94,7 @@ export const makeNeko = (selector, zoom) => {
     translate: { x: 90, y: 50, z: 60 }
   })
 
-  const animate = () => {
-    illo.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
-
-  animate()
+  illo.updateRenderGraph()
 
   return illo
 }

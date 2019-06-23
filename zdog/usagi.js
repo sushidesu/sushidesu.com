@@ -2,11 +2,11 @@ import { colors } from '~/common/color.js'
 
 const main = colors.body
 
-export const makeUsagi = (selector, zoom) => {
+export const makeUsagi = (selector, zoom, drag) => {
   const illo = new Zdog.Illustration({
     element: selector,
     zoom: zoom,
-    dragRotate: true,
+    dragRotate: drag,
     translate: { y: 40 }
   })
 
@@ -64,12 +64,7 @@ export const makeUsagi = (selector, zoom) => {
     translate: { y: 10, z: 90 }
   })
 
-  const animate = () => {
-    illo.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
-
-  animate()
+  illo.updateRenderGraph()
 
   return illo
 }
