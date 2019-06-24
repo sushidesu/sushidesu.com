@@ -1,11 +1,12 @@
 <template>
   <div>
-    <neko  class="main" />
+    <neko  class="main-neko" />
+    <div class="background"></div>
   </div>
 </template>
 
 <style scoped>
-  .main {
+  .main-neko {
     width: 320px;
     height: 320px;
     margin: auto;
@@ -16,6 +17,10 @@
     right: 0;
     z-index: 2;
   }
+  .background {
+    background-color: transparent;
+    height: 100%;
+  }
 </style>
 
 
@@ -25,7 +30,6 @@ import Neko from '~/components/Neko.vue'
 export default {
   components: {
     Neko
-  },
-  layout: 'toppage'
+  }
 }
 </script>
