@@ -69,7 +69,7 @@
 
 <script>
 import { makeNeko } from '~/zdog/neko.js'
-import { makeKuma} from '~/zdog/kuma.js'
+import { makeKuma } from '~/zdog/kuma.js'
 import { makeUsagi } from '~/zdog/usagi.js'
 import { makeSakana } from '~/zdog/sakana.js'
 
