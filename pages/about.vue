@@ -17,23 +17,23 @@
           <p>
             言語: <span class="tag">JavaScript</span> <span class="tag">HTML</span> <span class="tag">CSS</span><br>
             使った技術: <span class="tag">Nuxt.js</span> <span class="tag">Zdog</span> <span class="tag">Netlify</span><br>
-            コード: <a href="">GitHub</a>
+            コード: <a href="https://github.com/sushi-desu/sushidesu.com">GitHub</a>
           </p>
           <p>Zdogを使いたくて作りました。ポートフォリオを兼ねています。</p>
 
-          <h3 class="is-size-5">Chrome拡張機能 - Cake (<a href="">Chromeウェブストア</a>)</h3>
+          <h3 class="is-size-5">Chrome拡張機能 - Cake (<a href="https://chrome.google.com/webstore/detail/cake/icipiapabialkgjnobhfolicbgkbpckc">Chromeウェブストア</a>)</h3>
           <p>
             言語: <span class="tag">TypeScript</span> <span class="tag">Pug</span> <span class="tag">Sass</span><br>
             使った技術: <span class="tag">ChromeApi</span> <span class="tag">gulp.js</span> <span class="tag">webpack</span> <span class="tag">Bulma</span><br>
-            コード: <a href="">GitHub</a>
+            コード: <a href="https://github.com/sushi-desu/cake">GitHub</a>
           </p>
           <p>複数のECサイトに個別に商品登録するのが面倒だったので一括で更新できるように作りました。jsonでのインポート・エクスポート機能や各項目のバリデーションなど、いろいろできます。</p>
 
-          <h3 class="is-size-5">Random Color Generator (<a href="">サイト</a>)</h3>
+          <h3 class="is-size-5">Random Color Generator (<a href="">準備中</a>)</h3>
           <p>
             言語: <span class="tag">JavaScript</span> <span class="tag">HTML</span> <span class="tag">CSS</span><br>
             使った技術: <span class="tag">Parcel</span> <span class="tag">PostCSS</span><br>
-            コード: <a href="">GitHub</a>
+            コード: <a href="https://github.com/sushi-desu/color_generator">GitHub</a>
           </p>
           <p>完全にランダムな色が生成されて欲しかったので作りました。このサイトの色はこれで生成したものを使っています。</p>
 
@@ -51,7 +51,7 @@
             使った技術: <span class="tag">NPOI</span> <span class="tag">WPF</span> <span class="tag">LINQ</span><br>
             コード: <span>準備中</span>
           </p>
-          <p>バーコードプリンターに付属しているアプリケーションが使いにくかったので作りました。エクセルファイルを読み込み、4分割で印刷されます。初期の頃に作ったものでコードが汚いですが、公開予定です。</p>
+          <p>バーコードプリンターに付属しているアプリケーションが使いにくかったので作りました。エクセルファイルを読み込み機能や4分割での印刷機能があります。初期の頃に作ったものですが、公開予定です。</p>
 
         </div>
       </div>
