@@ -1,8 +1,9 @@
-import { createClient } from "contentful";
+// import { createClient } from "contentful";
+import { GraphQLClient } from "graphql-request"
+export { gql } from "graphql-request"
 
-const client = createClient({
-  space: process.env.SPACE_ID,
-  accessToken: process.env.ACCESS_TOKEN
-})
+if (!process.env.GRAPHCMS_ENDPOINT) {
+  throw new Error()
+}
 
-export const fetchEntries = content_type => client.getEntries({ content_type })
+export const graphQLClient = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)
