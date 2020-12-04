@@ -1,0 +1,17 @@
+{
+  "name": "sushidesu.com",
+  "image": "node:14.15.1-alpine",
+  "forwardPorts": [
+    3000,
+    4000,
+    8000,
+  ],
+  "extensions": [
+    "jpoissonnier.vscode-styled-components",
+    "octref.vetur",
+  ],
+  "settings": { 
+		"terminal.integrated.shell.linux": null
+  },
+  "postCreateCommand": "apk update && apk add git openssh vim",
+}
