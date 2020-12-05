@@ -1,14 +1,18 @@
 <template>
   <section class="section">
-    <h2 class="title">Works</h2>
-    <div>
-      <div class="card" v-for="work in works" :key="work.id">
-        <div class="card-content ">
-          <h3 class="title is-4">{{ work.title }}</h3>
-          <div>
-            <span class="tag" v-for="tag in work.tags" :key="tag">{{ tag }} </span>
+    <div class="container">
+      <div class="content">
+        <h2 class="title">Works</h2>
+        <div>
+          <div class="card" v-for="work in works" :key="work.id">
+            <div class="card-content ">
+              <h3 class="title is-4">{{ work.title }}</h3>
+              <div>
+                <span class="tag" v-for="tag in work.tags" :key="tag">{{ tag }}</span>
+              </div>
+              <p>{{ work.description }}</p>
+            </div>
           </div>
-          <p>{{ work.description }}</p>
         </div>
       </div>
     </div>

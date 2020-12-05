@@ -13,8 +13,8 @@
         </div>
 
         <div class="level-item">
-          <nuxt-link to="/illustration" class="item button is-primary is-outlined">
-            <canvas class="usagi" width="40" height="40"></canvas><span class="lnk">Illust<span class="is-hidden-tablet">.</span><span class="is-hidden-mobile">ration</span></span>
+          <nuxt-link to="/works" class="item button is-primary is-outlined">
+            <canvas class="usagi" width="40" height="40"></canvas><span class="lnk">Works</span>
           </nuxt-link>
         </div>
         <div class="level-item">
