@@ -4,13 +4,13 @@
       <div class="content">
         <h2 class="title">Works</h2>
         <div>
-          <div class="card" v-for="work in works" :key="work.id">
+          <div class="card" v-for="app in apps" :key="app.id">
             <div class="card-content ">
-              <h3 class="title is-4">{{ work.title }}</h3>
+              <h3 class="title is-4">{{ app.title }}</h3>
               <div>
-                <span class="tag" v-for="tag in work.tags" :key="tag">{{ tag }}</span>
+                <span class="tag" v-for="tag in app.tags" :key="tag.id">{{ tag.title }}</span>
               </div>
-              <p>{{ work.description }}</p>
+              <p>{{ app.description }}</p>
             </div>
           </div>
         </div>
@@ -32,25 +32,45 @@
 }
 </style>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from "nuxt-property-decorator"
 import { graphQLClient, gql } from "../api"
 
-export default {
-  async asyncData ({ params }) {
+type App = {
+  title: string
+  tags: Tag[]
+  description: string
+  link: string
+  source: string
+}
+
+type Tag = {
+  id: string
+  title: string
+}
+
+@Component
+export default class Works extends Vue {
+  async asyncData(): Promise<{ apps: App[] }> {
     const query = gql`
       {
-        works {
-          id
+        apps {
           title
+          tags {
+            id
+            title
+          }
           description
-          tags
+          link
+          source
         }
       }
     `
-    const { works } = await graphQLClient.request(query)
+    const { apps } = await graphQLClient.request<{ apps: App[] }>(query)
 
     return {
-      works: works
+      apps
     }
   }
 }
