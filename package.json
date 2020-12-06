@@ -21,7 +21,10 @@
     "nuxt": "^2.4.0"
   },
   "devDependencies": {
+    "@nuxt/types": "^2.14.9",
+    "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/dotenv": "^1.4.1",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "webpack": "^5.10.0"
   }
 }
