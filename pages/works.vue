@@ -7,10 +7,15 @@
           <div class="card" v-for="app in apps" :key="app.id">
             <div class="card-content ">
               <h3 class="title is-4">{{ app.title }}</h3>
-              <div>
-                <span class="tag" v-for="tag in app.tags" :key="tag.id">{{ tag.title }}</span>
+              <div class="image-wrapper">
+                <img v-bind:src="app.screenshots[0].url" />
               </div>
-              <p>{{ app.description }}</p>
+              <div class="content">
+                <div class="tags">
+                  <span class="tag" v-for="tag in app.tags" :key="tag.id">{{ tag.title }}</span>
+                </div>
+                <p>{{ app.description }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -23,12 +28,26 @@
 .card:not(:last-child) {
   margin-bottom: 1rem;
 }
+.tags {
+  margin: 1rem 0 .5rem;
+}
 .tag {
   background-color: var(--white);
   border: 1px solid var(--sub);
 }
 .tag:not(:first-child) {
-  margin-left: .5rem;
+  margin-left: .25rem;
+}
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: calc(100% * 3 / 4);
+}
+.image-wrapper > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
 
@@ -43,6 +62,12 @@ type App = {
   description: string
   link: string
   source: string
+  screenshots: Asset[]
+}
+
+type Asset = {
+  id: string
+  url: string
 }
 
 type Tag = {
@@ -60,6 +85,10 @@ export default class Works extends Vue {
           tags {
             id
             title
+          }
+          screenshots {
+            id
+            url
           }
           description
           link
