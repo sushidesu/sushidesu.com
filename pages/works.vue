@@ -1,32 +1,48 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="content">
-        <h2 class="title">Works</h2>
-        <div>
-          <div class="card" v-for="app in apps" :key="app.id">
-            <div class="card-content ">
-              <h3 class="title is-4">{{ app.title }}</h3>
-              <div class="image-wrapper">
-                <img v-bind:src="app.screenshots[0].url" />
-              </div>
-              <div class="content">
-                <div class="tags">
-                  <span class="tag" v-for="tag in app.tags" :key="tag.id">{{ tag.title }}</span>
-                </div>
-                <p>{{ app.description }}</p>
-              </div>
+      <h2 class="title">Works</h2>
+
+      <ul class="works">
+        <li class="work" v-for="app in apps" :key="app.id">
+          <article>
+            <div class="image-wrapper">
+              <img v-bind:src="app.screenshots[0].url" />
             </div>
-          </div>
-        </div>
-      </div>
+            <div class="content">
+              <h3 class="title is-4">{{ app.title }}</h3>
+              <div class="tags">
+                <span class="tag" v-for="tag in app.tags" :key="tag.id">{{ tag.title }}</span>
+              </div>
+              <p>{{ app.description }}</p>
+            </div>
+          </article>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <style scoped>
-.card:not(:last-child) {
-  margin-bottom: 1rem;
+.works {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 32px;
+  column-gap: 32px;
+}
+@media screen and (min-width: 834px) {
+  .works {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.work {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px var(--main-shadow);
+  overflow: hidden;
+}
+.work .content {
+  padding: 1rem;
 }
 .tags {
   margin: 1rem 0 .5rem;
@@ -41,7 +57,7 @@
 .image-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: calc(100% * 3 / 4);
+  padding-bottom: calc(100% * 9 / 20);
 }
 .image-wrapper > img {
   position: absolute;
