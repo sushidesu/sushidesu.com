@@ -47,6 +47,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-fontawesome',
     '@nuxtjs/bulma',
     [
       '@nuxtjs/google-gtag',
@@ -70,5 +71,11 @@ export default {
   /*
   ** TypeScript
   */
-  buildModules: ['@nuxt/typescript-build']
+  buildModules: ['@nuxt/typescript-build'],
+  /*
+  ** FontAwesome
+  */
+  fontawesome: {
+    component: 'fa'
+  }
 }

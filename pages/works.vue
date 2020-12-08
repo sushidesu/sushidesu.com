@@ -12,7 +12,9 @@
             <div class="content">
               <h3 class="title is-4">{{ app.title }}</h3>
               <div class="tags">
-                <span class="tag" v-for="tag in app.tags" :key="tag.id">{{ tag.title }}</span>
+                <span class="hashtag" v-for="tag in app.tags" :key="tag.id">
+                  <fa :icon="faHashtag" />{{ tag.title }}
+                </span>
               </div>
               <p>{{ app.description }}</p>
             </div>
@@ -47,13 +49,19 @@
 .tags {
   margin: 1rem 0 .5rem;
 }
-.tag {
-  background-color: var(--white);
-  border: 1px solid var(--sub);
+.hashtag {
+  font-size: .9rem;
+  color: #777;
 }
-.tag:not(:first-child) {
-  margin-left: .25rem;
+.hashtag {
+  margin-top: .25rem;
+  margin-right: .4rem;
 }
+.hashtag > svg {
+  margin-right: .1rem;
+  color: var(--sub);
+}
+
 .image-wrapper {
   position: relative;
   width: 100%;
@@ -71,6 +79,7 @@
 import Vue from 'vue'
 import { Component } from "nuxt-property-decorator"
 import { graphQLClient, gql } from "../api"
+import { faHashtag } from "@fortawesome/free-solid-svg-icons"
 
 type App = {
   title: string
@@ -93,6 +102,8 @@ type Tag = {
 
 @Component
 export default class Works extends Vue {
+  public faHashtag = faHashtag
+
   async asyncData(): Promise<{ apps: App[] }> {
     const query = gql`
       {
