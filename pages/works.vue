@@ -1,7 +1,10 @@
 <template>
   <section class="section">
     <div class="container">
-      <h2 class="title">Works</h2>
+      <div class="titles">
+        <h2 class="title">Works</h2>
+        <p class="subtitle is-6 has-text-grey">つくったもの</p>
+      </div>
 
       <ul class="works">
         <li class="work" v-for="app in apps" :key="app.id">
@@ -35,6 +38,13 @@
 </template>
 
 <style scoped>
+.titles {
+  display: flex;
+  align-items: baseline;
+}
+.titles > .subtitle {
+  margin-left: .5rem;
+}
 .works {
   display: grid;
   grid-template-columns: 1fr;
@@ -54,10 +64,10 @@
   overflow: hidden;
 }
 .work .content {
-  padding: 1rem 1rem 2rem;
+  padding: 1rem 1rem 2.5rem;
 }
 .tags {
-  margin: 1rem 0 .5rem;
+  margin: -1.2rem 0 1rem;
 }
 .hashtag {
   font-size: .9rem;
