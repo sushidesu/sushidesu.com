@@ -113,6 +113,7 @@ import { faHashtag, faExternalLinkAlt, } from "@fortawesome/free-solid-svg-icons
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 
 type App = {
+  id: string
   title: string
   tags: Tag[]
   description: string
@@ -141,6 +142,7 @@ export default class Works extends Vue {
     const query = gql`
       {
         apps {
+          id
           title
           tags {
             id
