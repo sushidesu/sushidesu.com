@@ -22,6 +22,10 @@
                 </span>
               </div>
               <p>{{ app.description }}</p>
+              <a v-if="app.source" class="tag github-tag" :href="app.source" target="_blank" rel="nofollow noopener" >
+                <span class="icon"><fa :icon="faGithub" /></span>
+                <span>GitHub</span>
+              </a>
             </div>
           </article>
         </li>
@@ -43,13 +47,14 @@
   }
 }
 .work {
+  position: relative;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 5px 10px var(--main-shadow);
   overflow: hidden;
 }
 .work .content {
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
 }
 .tags {
   margin: 1rem 0 .5rem;
@@ -83,6 +88,11 @@
   height: 20px;
   margin-left: .5em;
 }
+.github-tag {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
 </style>
 
 <script lang="ts">
@@ -90,6 +100,7 @@ import Vue from 'vue'
 import { Component } from "nuxt-property-decorator"
 import { graphQLClient, gql } from "../api"
 import { faHashtag, faExternalLinkAlt, } from "@fortawesome/free-solid-svg-icons"
+import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 
 type App = {
   title: string
@@ -114,6 +125,7 @@ type Tag = {
 export default class Works extends Vue {
   public faHashtag = faHashtag
   public faLink = faExternalLinkAlt
+  public faGithub = faGithubSquare
 
   async asyncData(): Promise<{ apps: App[] }> {
     const query = gql`
