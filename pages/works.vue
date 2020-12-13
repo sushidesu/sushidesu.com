@@ -10,7 +10,12 @@
               <img v-bind:src="app.screenshots[0].url" />
             </div>
             <div class="content">
-              <h3 class="title is-4">{{ app.title }}</h3>
+              <h3 v-if="app.link" class="title is-4">
+                <a target="_blank" rel="nofollow noopener" :href="app.link">
+                  {{ app.title }}<fa class="icon" :icon="faLink" />
+                </a>
+              </h3>
+              <h3 v-else class="title is-4">{{ app.title }}</h3>
               <div class="tags">
                 <span class="hashtag" v-for="tag in app.tags" :key="tag.id">
                   <fa :icon="faHashtag" />{{ tag.title }}
@@ -73,13 +78,18 @@
   height: 100%;
   object-fit: cover;
 }
+.icon {
+  font-size: 16px;
+  height: 20px;
+  margin-left: .5em;
+}
 </style>
 
 <script lang="ts">
 import Vue from 'vue'
 import { Component } from "nuxt-property-decorator"
 import { graphQLClient, gql } from "../api"
-import { faHashtag } from "@fortawesome/free-solid-svg-icons"
+import { faHashtag, faExternalLinkAlt, } from "@fortawesome/free-solid-svg-icons"
 
 type App = {
   title: string
@@ -103,6 +113,7 @@ type Tag = {
 @Component
 export default class Works extends Vue {
   public faHashtag = faHashtag
+  public faLink = faExternalLinkAlt
 
   async asyncData(): Promise<{ apps: App[] }> {
     const query = gql`
