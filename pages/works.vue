@@ -64,6 +64,7 @@
   overflow: hidden;
 }
 .work .content {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   padding: 1rem 1rem 2.5rem;
 }
 .tags {
