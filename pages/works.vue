@@ -103,6 +103,7 @@
   position: absolute;
   bottom: 1rem;
   right: 1rem;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.08);
 }
 </style>
 
