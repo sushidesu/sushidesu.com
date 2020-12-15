@@ -75,10 +75,37 @@ import { makeSakana } from '~/zdog/sakana.js'
 
 export default {
   mounted() {
-    makeNeko('.neko', 0.14, false)
-    makeKuma('.kuma', 0.18, false)
-    makeUsagi('.usagi', 0.14, false)
-    makeSakana('.sakana', 0.14, false)
+    const neko = makeNeko('.neko', 0.14, true)
+    const kuma = makeKuma('.kuma', 0.18, true)
+    const usagi = makeUsagi('.usagi', 0.14, true)
+    const sakana = makeSakana('.sakana', 0.14, true)
+
+    const animate = () => {
+      if (this.rotate) {
+      neko.rotate.set(this.rotate)
+      kuma.rotate.set(this.rotate)
+      usagi.rotate.set(this.rotate)
+      sakana.rotate.set(this.rotate)
+      }
+
+      neko.updateRenderGraph()
+      kuma.updateRenderGraph()
+      usagi.updateRenderGraph()
+      sakana.updateRenderGraph()
+      requestAnimationFrame(animate)
+    }
+    animate()
+  },
+  methods: {
+    setListener() {
+      this.$nuxt.$on("drag", this.onNekoDrag)
+    },
+    onNekoDrag(rotate) {
+      this.rotate = rotate
+    }
+  },
+  created() {
+    this.setListener()
   }
 }
 </script>
