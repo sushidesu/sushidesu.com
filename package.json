@@ -24,7 +24,8 @@
     "graphql-request": "^3.3.0",
     "nuxt": "^2.4.0",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-property-decorator": "^2.8.8"
+    "nuxt-property-decorator": "^2.8.8",
+    "zdog": "^1.1.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.9",
