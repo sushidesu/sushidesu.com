@@ -16,9 +16,6 @@ export default {
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ],
-    script: [
-      { src: 'https://unpkg.com/zdog@1/dist/zdog.dist.min.js' }
-    ]
   },
 
   env: {
@@ -47,6 +44,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-fontawesome',
     '@nuxtjs/bulma',
     [
       '@nuxtjs/google-gtag',
@@ -65,5 +63,16 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+
+  /*
+  ** TypeScript
+  */
+  buildModules: ['@nuxt/typescript-build'],
+  /*
+  ** FontAwesome
+  */
+  fontawesome: {
+    component: 'fa'
   }
 }

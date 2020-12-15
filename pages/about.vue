@@ -4,55 +4,51 @@
       <div class="container">
         <div class="content">
           <h2 class="title">About</h2>
-          <p>sushidesu (すしです)</p>
-          <p>
-            雑貨屋さんでネットショップページの管理のアルバイトをしながら、趣味でプログラミングをしています。<br>
-            新しいものが好きです。<br>
-            世界中で3億MAUに使われ続けるサービスを作れるくらいのエンジニアになるべく、現在就職活動中です。
-          </p>
-
-          <h2 class="title">つくったもの</h2>
-
-          <h3 class="is-size-5">このページ (<a href="https://sushidesu.com">sushidesu.com</a>)</h3>
-          <p>
-            言語: <span class="tag">JavaScript</span> <span class="tag">HTML</span> <span class="tag">CSS</span><br>
-            使った技術: <span class="tag">Nuxt.js</span> <span class="tag">Zdog</span> <span class="tag">Netlify</span><br>
-            コード: <a href="https://github.com/sushi-desu/sushidesu.com">GitHub</a>
-          </p>
-          <p>Zdogを使いたくて作りました。ポートフォリオを兼ねています。</p>
-
-          <h3 class="is-size-5">Chrome拡張機能 - Cake (<a href="https://chrome.google.com/webstore/detail/cake/icipiapabialkgjnobhfolicbgkbpckc">Chromeウェブストア</a>)</h3>
-          <p>
-            言語: <span class="tag">TypeScript</span> <span class="tag">Pug</span> <span class="tag">Sass</span><br>
-            使った技術: <span class="tag">ChromeApi</span> <span class="tag">gulp.js</span> <span class="tag">webpack</span> <span class="tag">Bulma</span><br>
-            コード: <a href="https://github.com/sushi-desu/cake">GitHub</a>
-          </p>
-          <p>複数のECサイトに個別に商品登録するのが面倒だったので一括で更新できるように作りました。jsonでのインポート・エクスポート機能や各項目のバリデーションなど、いろいろできます。</p>
-
-          <h3 class="is-size-5">Random Color Generator (<a href="">準備中</a>)</h3>
-          <p>
-            言語: <span class="tag">JavaScript</span> <span class="tag">HTML</span> <span class="tag">CSS</span><br>
-            使った技術: <span class="tag">Parcel</span> <span class="tag">PostCSS</span><br>
-            コード: <a href="https://github.com/sushi-desu/color_generator">GitHub</a>
-          </p>
-          <p>完全にランダムな色が生成されて欲しかったので作りました。このサイトの色はこれで生成したものを使っています。</p>
-
-          <h3 class="is-size-5">日計表のスクレイピング</h3>
-          <p>
-            言語: <span class="tag">Python3</span><br>
-            使った技術: <span class="tag">Google Sheets API</span> <span class="tag">Selenium</span> <span class="tag">Headless Chrome</span><br>
-            コード: <span>準備中</span>
-          </p>
-          <p>複数のECサイトから手動で日々の売り上げを集計するのが面倒だったので作りました。スクリプトを起動するだけで、各サイトから売り上げをスクレイピングしてGoogle Sheetsに自動で記入してくれます。未記入の日の分もまとめて記入、新しいシートも自動で作ってくれるなど、ストレスなく使えるように工夫しています。</p>
-
-          <h3 class="is-size-5">簡易バーコード印刷アプリ</h3>
-          <p>
-            言語: <span class="tag">C#</span><br>
-            使った技術: <span class="tag">NPOI</span> <span class="tag">WPF</span> <span class="tag">LINQ</span><br>
-            コード: <span>準備中</span>
-          </p>
-          <p>バーコードプリンターに付属しているアプリケーションが使いにくかったので作りました。エクセルファイルを読み込み機能や4分割での印刷機能があります。初期の頃に作ったものですが、公開予定です。</p>
-
+          <div class="about" v-for="about in abouts" :key="about.id">
+            <div class="thmb">
+              <img :src="about.icon.url" />
+            </div>
+            <p class="name">{{ about.name }}</p>
+            <p class="description">{{ about.description }}</p>
+            <div class="tags">
+              <a
+                v-if="about.githubLink"
+                class="tag is-light"
+                :href="about.githubLink"
+                target="_blank"
+                rel="nofollow noopener"
+              >
+                <span class="icon">
+                  <fa :icon="faGithub" />
+                </span>
+                <span>GitHub</span>
+              </a>
+              <a
+                v-if="about.twitterLink"
+                class="tag is-info is-light"
+                :href="about.twitterLink"
+                target="_blank"
+                rel="nofollow noopener"
+              >
+                <span class="icon">
+                  <fa :icon="faTwitter" />
+                </span>
+                <span>Twitter</span>
+              </a>
+              <a
+                v-if="about.qiitaLink"
+                class="tag is-success is-light"
+                :href="about.qiitaLink"
+                target="_blank"
+                rel="nofollow noopener"
+              >
+                <span class="icon">
+                  <fa :icon="faSearch" />
+                </span>
+                <span>Qiita</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -60,9 +56,90 @@
 </template>
 
 <style scoped>
-.tag {
-  background-color: var(--white);
-  border: 1px solid var(--sub);
+.name {
+  text-align: center;
+}
+.description {
+  white-space: pre-wrap;
+}
+.thmb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0, 0.05);
+  margin: 0 auto;
+}
+.thmb > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(50%);
+}
+.tags {
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 3px 8px var(--main-shadow));
+}
+@media screen and (min-width: 1024px) {
+  .thmb {
+    margin: 0
+  }
+  .name {
+    text-align: initial;
+  }
 }
 </style>
 
+<script lang="ts">
+import Vue from 'vue'
+import { graphQLClient, gql } from "../api"
+import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
+
+type Asset = {
+  id: string
+  url: string
+}
+
+type About = {
+  name: string
+  description: string
+  icon: Asset
+  githubLink?: string
+  twitterLink?: string
+  qiitaLink?: string
+}
+
+export default Vue.extend({
+  asyncData: async () => {
+    const query = gql`
+      {
+        abouts {
+          id
+          name
+          description
+          icon {
+            id
+            url
+          }
+          githubLink
+          twitterLink
+          qiitaLink
+        }
+      }
+    `
+    const { abouts } = await graphQLClient.request<{ abouts: About[]}>(query)
+
+    return {
+      abouts
+    }
+  },
+  data: () => ({
+    faTwitter,
+    faGithub,
+    faSearch,
+  })
+})
+</script>
