@@ -3,6 +3,7 @@ import pkg from './package'
 require('dotenv').config()
 
 export default {
+  target: "static",
   /*
   ** Headers of the page
   */
