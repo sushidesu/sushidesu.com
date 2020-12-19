@@ -1,4 +1,4 @@
-import { colors } from '~/common/color.js'
+import { colors } from '~/common/color'
 import Zdog from "zdog"
 
 export const makeSakana = (selector, zoom, drag) => {

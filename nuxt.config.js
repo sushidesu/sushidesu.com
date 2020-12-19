@@ -4,6 +4,7 @@ require('dotenv').config()
 
 export default {
   target: "static",
+  srcDir: "src/",
   /*
   ** Headers of the page
   */

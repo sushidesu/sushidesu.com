@@ -1,4 +1,4 @@
-import { colors } from '~/common/color.js'
+import { colors } from '~/common/color'
 import Zdog from "zdog"
 
 const main = colors.body
