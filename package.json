@@ -2,7 +2,7 @@
   "name": "sushidesu.com",
   "version": "2.0.0",
   "description": "SUSHI CREATOR",
-  "author": "hugemerge",
+  "author": "sushidesu",
   "private": true,
   "scripts": {
     "dev": "nuxt",
