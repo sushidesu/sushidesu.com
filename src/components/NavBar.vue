@@ -8,7 +8,7 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="navbar-menu"></div>
+    <div class="navbar-menu" />
   </nav>
 </template>
 
@@ -19,11 +19,11 @@
 </style>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from "~/components/Logo.vue"
 
 export default {
   components: {
-    Logo
-  }
+    Logo,
+  },
 }
 </script>

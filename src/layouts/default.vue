@@ -2,12 +2,11 @@
   <div class="site-all">
     <nav-bar class="nav-bar" />
     <nuxt class="main" />
-    <menu-bar class="menu-bar"/>
+    <menu-bar class="menu-bar" />
   </div>
 </template>
 
 <style>
-
 *,
 *:before,
 *:after {
@@ -55,17 +54,16 @@ html {
   position: sticky;
   bottom: 0;
 }
-
 </style>
 
 <script>
-import NavBar from '~/components/NavBar.vue';
-import MenuBar from '~/components/MenuBar.vue';
+import NavBar from "~/components/NavBar.vue"
+import MenuBar from "~/components/MenuBar.vue"
 
 export default {
   components: {
     NavBar,
-    MenuBar
-  }
+    MenuBar,
+  },
 }
 </script>

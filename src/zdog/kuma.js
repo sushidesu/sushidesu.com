@@ -1,4 +1,4 @@
-import { colors } from '~/common/color'
+import { colors } from "~/common/color"
 import Zdog from "zdog"
 
 export const makeKuma = (selector, zoom, drag) => {
@@ -6,29 +6,26 @@ export const makeKuma = (selector, zoom, drag) => {
     element: selector,
     zoom: zoom,
     dragRotate: drag,
-    translate: { y: 10 }
+    translate: { y: 10 },
   })
 
   const head = new Zdog.Shape({
     addTo: illo,
     color: colors.body,
-    path: [
-      { x: -14 },
-      { x:  14 }
-    ],
-    stroke: 160
+    path: [{ x: -14 }, { x: 14 }],
+    stroke: 160,
   })
 
   const face = new Zdog.Group({
     addTo: illo,
-    translate: { z: 80 }
+    translate: { z: 80 },
   })
 
   // ear
   const ear_left = new Zdog.Group({
     addTo: illo,
     translate: { x: -60, y: -60 },
-    rotate: { z: -0.6 }
+    rotate: { z: -0.6 },
   })
   // ear_outer_left
   new Zdog.Ellipse({
@@ -37,7 +34,7 @@ export const makeKuma = (selector, zoom, drag) => {
     width: 64,
     height: 60,
     stroke: 20,
-    fill: true
+    fill: true,
   })
   // ear_inner_left
   new Zdog.Ellipse({
@@ -47,26 +44,23 @@ export const makeKuma = (selector, zoom, drag) => {
     fill: true,
     quarters: 2,
     closed: true,
-    rotate: { z: -Zdog.TAU/4 }
+    rotate: { z: -Zdog.TAU / 4 },
   })
   // ear_right
   ear_left.copyGraph({
     translate: { x: 60, y: -60 },
-    rotate: { z: 0.6 }
+    rotate: { z: 0.6 },
   })
 
   // eye
   const eye_left = new Zdog.Shape({
     addTo: face,
     stroke: 8,
-    path: [
-      { y: -10 },
-      { y:  10 }
-    ],
-    translate: { x: -28, y: -26}
+    path: [{ y: -10 }, { y: 10 }],
+    translate: { x: -28, y: -26 },
   })
   eye_left.copy({
-    translate: { x: 28, y: -26 }
+    translate: { x: 28, y: -26 },
   })
 
   // mouse
@@ -75,7 +69,7 @@ export const makeKuma = (selector, zoom, drag) => {
     width: 20,
     height: 24,
     stroke: 6,
-    translate: { y: 10 }
+    translate: { y: 10 },
   })
 
   illo.updateRenderGraph()

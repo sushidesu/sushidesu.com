@@ -7,10 +7,10 @@
       </div>
 
       <ul class="works">
-        <li class="work" v-for="app in apps" :key="app.id">
+        <li v-for="app in apps" :key="app.id" class="work">
           <article>
             <div class="image-wrapper">
-              <img v-bind:src="app.screenshots[0].url" />
+              <img :src="app.screenshots[0].url" />
             </div>
             <div class="content">
               <h3 v-if="app.link" class="title is-4">
@@ -18,14 +18,22 @@
                   {{ app.title }}<fa class="icon" :icon="faLink" />
                 </a>
               </h3>
-              <h3 v-else class="title is-4">{{ app.title }}</h3>
+              <h3 v-else class="title is-4">
+                {{ app.title }}
+              </h3>
               <div class="tags">
-                <span class="hashtag" v-for="tag in app.tags" :key="tag.id">
+                <span v-for="tag in app.tags" :key="tag.id" class="hashtag">
                   <fa :icon="faHashtag" />{{ tag.title }}
                 </span>
               </div>
               <p>{{ app.description }}</p>
-              <a v-if="app.source" class="tag github-tag" :href="app.source" target="_blank" rel="nofollow noopener" >
+              <a
+                v-if="app.source"
+                class="tag github-tag"
+                :href="app.source"
+                target="_blank"
+                rel="nofollow noopener"
+              >
                 <span class="icon"><fa :icon="faGithub" /></span>
                 <span>GitHub</span>
               </a>
@@ -43,7 +51,7 @@
   align-items: baseline;
 }
 .titles > .subtitle {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 .works {
   display: grid;
@@ -71,15 +79,15 @@
   margin: -1.2rem 0 1rem;
 }
 .hashtag {
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #777;
 }
 .hashtag {
-  margin-top: .25rem;
-  margin-right: .4rem;
+  margin-top: 0.25rem;
+  margin-right: 0.4rem;
 }
 .hashtag > svg {
-  margin-right: .1rem;
+  margin-right: 0.1rem;
   color: var(--sub);
 }
 
@@ -97,7 +105,7 @@
 .icon {
   font-size: 16px;
   height: 20px;
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 .github-tag {
   position: absolute;
@@ -108,10 +116,10 @@
 </style>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue"
 import { Component } from "nuxt-property-decorator"
 import { graphQLClient, gql } from "../api"
-import { faHashtag, faExternalLinkAlt, } from "@fortawesome/free-solid-svg-icons"
+import { faHashtag, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 
 type App = {
@@ -163,7 +171,7 @@ export default class Works extends Vue {
     const { apps } = await graphQLClient.request<{ apps: App[] }>(query)
 
     return {
-      apps
+      apps,
     }
   }
 }

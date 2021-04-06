@@ -9,6 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "fix": "yarn fix:lint && yarn fix:format",
     "fix:lint": "yarn eslint --fix \"./src/**/*.{js,ts,vue}\"",
     "fix:format": "yarn prettier --write \"./src/**/*.{js,ts,vue}\""
   },
