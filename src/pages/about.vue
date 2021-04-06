@@ -4,12 +4,16 @@
       <div class="container">
         <div class="content">
           <h2 class="title">About</h2>
-          <div class="about" v-for="about in abouts" :key="about.id">
+          <div v-for="about in abouts" :key="about.id" class="about">
             <div class="thmb">
               <img :src="about.icon.url" />
             </div>
-            <p class="name">{{ about.name }}</p>
-            <p class="description">{{ about.description }}</p>
+            <p class="name">
+              {{ about.name }}
+            </p>
+            <p class="description">
+              {{ about.description }}
+            </p>
             <div class="tags">
               <a
                 v-if="about.githubLink"
@@ -67,7 +71,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1px solid rgba(0,0,0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   margin: 0 auto;
 }
 .thmb > img {
@@ -84,7 +88,7 @@
 }
 @media screen and (min-width: 1024px) {
   .thmb {
-    margin: 0
+    margin: 0;
   }
   .name {
     text-align: initial;
@@ -93,7 +97,7 @@
 </style>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue"
 import { graphQLClient, gql } from "../api"
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -130,16 +134,16 @@ export default Vue.extend({
         }
       }
     `
-    const { abouts } = await graphQLClient.request<{ abouts: About[]}>(query)
+    const { abouts } = await graphQLClient.request<{ abouts: About[] }>(query)
 
     return {
-      abouts
+      abouts,
     }
   },
   data: () => ({
     faTwitter,
     faGithub,
     faSearch,
-  })
+  }),
 })
 </script>

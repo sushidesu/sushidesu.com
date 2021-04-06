@@ -1,4 +1,3 @@
-
 export const colors = {
-  body: "#9ED"
+  body: "#9ED",
 }
