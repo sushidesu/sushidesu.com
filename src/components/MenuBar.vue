@@ -78,46 +78,40 @@ import { makeKuma } from "~/zdog/kuma.js"
 import { makeUsagi } from "~/zdog/usagi.js"
 import { makeSakana } from "~/zdog/sakana.js"
 
+const app = useNuxtApp()
+
 const canvasNeko = ref()
+const neko = ref()
 const canvasKuma = ref()
+const kuma = ref()
 const canvasUsagi = ref()
+const usagi = ref()
 const canvasSakana = ref()
+const sakana = ref()
 
-onMounted(() => {
-  const _neko = makeNeko(canvasNeko.value, 0.14, true)
-  const _kuma = makeKuma(canvasKuma.value, 0.18, true)
-  const _usagi = makeUsagi(canvasUsagi.value, 0.14, true)
-  const _sakana = makeSakana(canvasSakana.value, 0.14, true)
-
-//  const animate = () => {
-//    if (this.rotate) {
-//      neko.rotate.set(this.rotate)
-//      kuma.rotate.set(this.rotate)
-//      usagi.rotate.set(this.rotate)
-//      sakana.rotate.set(this.rotate)
-//    }
-//
-//    neko.updateRenderGraph()
-//    kuma.updateRenderGraph()
-//    usagi.updateRenderGraph()
-//    sakana.updateRenderGraph()
-//    requestAnimationFrame(animate)
-//  }
-//  animate()
+watchEffect(() => {
+  if (neko.value) {
+    neko.value.rotate.set(app.$rotate)
+    neko.value.updateRenderGraph()
+  }
+  if (kuma.value) {
+    kuma.value.rotate.set(app.$rotate)
+    kuma.value.updateRenderGraph()
+  }
+  if (usagi.value) {
+    usagi.value.rotate.set(app.$rotate)
+    usagi.value.updateRenderGraph()
+  }
+  if (sakana.value) {
+    sakana.value.rotate.set(app.$rotate)
+    sakana.value.updateRenderGraph()
+  }
 })
 
-
-// export default {
-//   created() {
-//     this.setListener()
-//   },
-//   methods: {
-//     setListener() {
-//       this.$nuxt.$on("drag", this.onNekoDrag)
-//     },
-//     onNekoDrag(rotate) {
-//       this.rotate = rotate
-//     },
-//   },
-// }
+onMounted(() => {
+  neko.value = makeNeko(canvasNeko.value, 0.14, true)
+  kuma.value = makeKuma(canvasKuma.value, 0.14, true)
+  usagi.value = makeUsagi(canvasUsagi.value, 0.14, true)
+  sakana.value = makeSakana(canvasSakana.value, 0.14, true)
+})
 </script>
