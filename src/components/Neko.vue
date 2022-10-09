@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas width="320" height="320" class="neko-canvas" />
+    <canvas ref="canvas" width="320" height="320" class="neko-canvas" />
     <!-- <input v-model="neko.rotate.x" /> -->
   </div>
 </template>
@@ -14,6 +14,7 @@
 <script setup>
 import { makeNeko } from "~/zdog/neko.js"
 
+const canvas = ref()
 const neko = ref()
 const rotate = ref({
   x: 0,
@@ -22,7 +23,7 @@ const rotate = ref({
 })
 
 onMounted(() => {
-  neko.value = makeNeko(".neko-canvas", 1, true)
+  neko.value = makeNeko(canvas.value, 1, true)
   rotate.value = neko.value.rotate
   const animate = () => {
     neko.value.updateRenderGraph()
