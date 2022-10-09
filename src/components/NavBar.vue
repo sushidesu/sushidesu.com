@@ -3,9 +3,9 @@
     <div class="navbar-brand">
       <div class="navbar-item">
         <logo class="logo" />
-        <nuxt-link to="/">
+        <NuxtLink to="/">
           <span class="subtitle">sushidesu.com</span>
-        </nuxt-link>
+        </NuxtLink>
       </div>
     </div>
     <div class="navbar-menu" />

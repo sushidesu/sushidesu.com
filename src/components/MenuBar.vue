@@ -1,33 +1,33 @@
 <template>
   <div class="level is-mobile">
     <div class="level-item has-text-centered">
-      <nuxt-link to="/" class="item button is-primary is-outlined">
+      <NuxtLink to="/" class="item button is-primary is-outlined">
         <canvas class="neko" width="40" height="40" /><span class="lnk"
           >Home</span
         >
-      </nuxt-link>
+      </NuxtLink>
     </div>
     <div class="level-item">
-      <nuxt-link to="/about" class="item button is-primary is-outlined">
+      <NuxtLink to="/about" class="item button is-primary is-outlined">
         <canvas class="kuma" width="40" height="40" /><span class="lnk"
           >About</span
         >
-      </nuxt-link>
+      </NuxtLink>
     </div>
 
     <div class="level-item">
-      <nuxt-link to="/works" class="item button is-primary is-outlined">
+      <NuxtLink to="/works" class="item button is-primary is-outlined">
         <canvas class="usagi" width="40" height="40" /><span class="lnk"
           >Works</span
         >
-      </nuxt-link>
+      </NuxtLink>
     </div>
     <div class="level-item">
-      <nuxt-link to="/contact" class="item button is-primary is-outlined">
+      <NuxtLink to="/contact" class="item button is-primary is-outlined">
         <canvas class="sakana" width="40" height="40" /><span class="lnk"
           >Contact</span
         >
-      </nuxt-link>
+      </NuxtLink>
     </div>
   </div>
 </template>
