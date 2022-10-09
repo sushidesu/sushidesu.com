@@ -6,7 +6,10 @@ export default defineNuxtConfig({
     public: {
       hygraphEndpoint: process.env.GRAPHCMS_ENDPOINT
     }
-  }
+  },
+  css: [
+   '~/common/color.css'
+  ]
 })
 
 // import pkg from './package'
