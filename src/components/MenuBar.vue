@@ -79,26 +79,26 @@ import { makeUsagi } from "~/zdog/usagi.js"
 import { makeSakana } from "~/zdog/sakana.js"
 
 onMounted(() => {
-  const neko = makeNeko(".neko", 0.14, true)
-  const kuma = makeKuma(".kuma", 0.18, true)
-  const usagi = makeUsagi(".usagi", 0.14, true)
-  const sakana = makeSakana(".sakana", 0.14, true)
+  const _neko = makeNeko(".neko", 0.14, true)
+  const _kuma = makeKuma(".kuma", 0.18, true)
+  const _usagi = makeUsagi(".usagi", 0.14, true)
+  const _sakana = makeSakana(".sakana", 0.14, true)
 
-  const animate = () => {
-    if (this.rotate) {
-      neko.rotate.set(this.rotate)
-      kuma.rotate.set(this.rotate)
-      usagi.rotate.set(this.rotate)
-      sakana.rotate.set(this.rotate)
-    }
-
-    neko.updateRenderGraph()
-    kuma.updateRenderGraph()
-    usagi.updateRenderGraph()
-    sakana.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
-  animate()
+//  const animate = () => {
+//    if (this.rotate) {
+//      neko.rotate.set(this.rotate)
+//      kuma.rotate.set(this.rotate)
+//      usagi.rotate.set(this.rotate)
+//      sakana.rotate.set(this.rotate)
+//    }
+//
+//    neko.updateRenderGraph()
+//    kuma.updateRenderGraph()
+//    usagi.updateRenderGraph()
+//    sakana.updateRenderGraph()
+//    requestAnimationFrame(animate)
+//  }
+//  animate()
 })
 
 
