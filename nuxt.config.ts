@@ -9,7 +9,18 @@ export default defineNuxtConfig({
   },
   css: [
    '~/common/color.css'
-  ]
+  ],
+  head: {
+    title: "sushidesu.com",
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: "This is sushidesu's portfolio site." }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+    ],
+  },
 })
 
 // import pkg from './package'

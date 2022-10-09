@@ -1,7 +1,7 @@
 <template>
   <div class="site-all">
     <nav-bar class="nav-bar" />
-    <nuxt class="main" />
+    <slot class="main" />
     <menu-bar class="menu-bar" />
   </div>
 </template>
