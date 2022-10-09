@@ -1,8 +1,10 @@
 <template>
   <div class="site-all">
-    <nav-bar class="nav-bar" />
-    <nuxt class="main" />
-    <menu-bar class="menu-bar" />
+    <NavBar class="nav-bar" />
+    <main class="main">
+      <slot />
+    </main>
+    <MenuBar class="menu-bar" />
   </div>
 </template>
 
@@ -55,15 +57,3 @@ html {
   bottom: 0;
 }
 </style>
-
-<script>
-import NavBar from "~/components/NavBar.vue"
-import MenuBar from "~/components/MenuBar.vue"
-
-export default {
-  components: {
-    NavBar,
-    MenuBar,
-  },
-}
-</script>

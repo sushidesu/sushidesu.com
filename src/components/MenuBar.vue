@@ -1,33 +1,65 @@
 <template>
   <div class="level is-mobile">
     <div class="level-item has-text-centered">
-      <nuxt-link to="/" class="item button is-primary is-outlined">
-        <canvas class="neko" width="40" height="40" /><span class="lnk"
-          >Home</span
-        >
-      </nuxt-link>
+      <NuxtLink
+        to="/"
+        class="item button is-primary is-outlined"
+      >
+        <canvas
+          ref="canvasNeko"
+          class="neko"
+          width="40"
+          height="40"
+        /><span
+          class="lnk"
+        >Home</span>
+      </NuxtLink>
     </div>
     <div class="level-item">
-      <nuxt-link to="/about" class="item button is-primary is-outlined">
-        <canvas class="kuma" width="40" height="40" /><span class="lnk"
-          >About</span
-        >
-      </nuxt-link>
+      <NuxtLink
+        to="/about"
+        class="item button is-primary is-outlined"
+      >
+        <canvas
+          ref="canvasKuma"
+          class="kuma"
+          width="40"
+          height="40"
+        /><span
+          class="lnk"
+        >About</span>
+      </NuxtLink>
     </div>
 
     <div class="level-item">
-      <nuxt-link to="/works" class="item button is-primary is-outlined">
-        <canvas class="usagi" width="40" height="40" /><span class="lnk"
-          >Works</span
-        >
-      </nuxt-link>
+      <NuxtLink
+        to="/works"
+        class="item button is-primary is-outlined"
+      >
+        <canvas
+          ref="canvasUsagi"
+          class="usagi"
+          width="40"
+          height="40"
+        /><span
+          class="lnk"
+        >Works</span>
+      </NuxtLink>
     </div>
     <div class="level-item">
-      <nuxt-link to="/contact" class="item button is-primary is-outlined">
-        <canvas class="sakana" width="40" height="40" /><span class="lnk"
-          >Contact</span
-        >
-      </nuxt-link>
+      <NuxtLink
+        to="/contact"
+        class="item button is-primary is-outlined"
+      >
+        <canvas
+          ref="canvasSakana"
+          class="sakana"
+          width="40"
+          height="40"
+        /><span
+          class="lnk"
+        >Contact</span>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -72,45 +104,46 @@
 }
 </style>
 
-<script>
+<script setup>
 import { makeNeko } from "~/zdog/neko.js"
 import { makeKuma } from "~/zdog/kuma.js"
 import { makeUsagi } from "~/zdog/usagi.js"
 import { makeSakana } from "~/zdog/sakana.js"
 
-export default {
-  mounted() {
-    const neko = makeNeko(".neko", 0.14, true)
-    const kuma = makeKuma(".kuma", 0.18, true)
-    const usagi = makeUsagi(".usagi", 0.14, true)
-    const sakana = makeSakana(".sakana", 0.14, true)
+const app = useNuxtApp()
 
-    const animate = () => {
-      if (this.rotate) {
-        neko.rotate.set(this.rotate)
-        kuma.rotate.set(this.rotate)
-        usagi.rotate.set(this.rotate)
-        sakana.rotate.set(this.rotate)
-      }
+const canvasNeko = ref()
+const neko = ref()
+const canvasKuma = ref()
+const kuma = ref()
+const canvasUsagi = ref()
+const usagi = ref()
+const canvasSakana = ref()
+const sakana = ref()
 
-      neko.updateRenderGraph()
-      kuma.updateRenderGraph()
-      usagi.updateRenderGraph()
-      sakana.updateRenderGraph()
-      requestAnimationFrame(animate)
-    }
-    animate()
-  },
-  created() {
-    this.setListener()
-  },
-  methods: {
-    setListener() {
-      this.$nuxt.$on("drag", this.onNekoDrag)
-    },
-    onNekoDrag(rotate) {
-      this.rotate = rotate
-    },
-  },
-}
+watchEffect(() => {
+  if (neko.value) {
+    neko.value.rotate.set(app.$rotate)
+    neko.value.updateRenderGraph()
+  }
+  if (kuma.value) {
+    kuma.value.rotate.set(app.$rotate)
+    kuma.value.updateRenderGraph()
+  }
+  if (usagi.value) {
+    usagi.value.rotate.set(app.$rotate)
+    usagi.value.updateRenderGraph()
+  }
+  if (sakana.value) {
+    sakana.value.rotate.set(app.$rotate)
+    sakana.value.updateRenderGraph()
+  }
+})
+
+onMounted(() => {
+  neko.value = makeNeko(canvasNeko.value, 0.14, true)
+  kuma.value = makeKuma(canvasKuma.value, 0.14, true)
+  usagi.value = makeUsagi(canvasUsagi.value, 0.14, true)
+  sakana.value = makeSakana(canvasSakana.value, 0.14, true)
+})
 </script>

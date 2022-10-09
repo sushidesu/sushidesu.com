@@ -1,6 +1,11 @@
 <template>
   <div>
-    <canvas width="320" height="320" class="neko-canvas" />
+    <canvas
+      ref="canvas"
+      width="320"
+      height="320"
+      class="neko-canvas"
+    />
     <!-- <input v-model="neko.rotate.x" /> -->
   </div>
 </template>
@@ -11,33 +16,26 @@
 }
 </style>
 
-<script>
+<script setup>
 import { makeNeko } from "~/zdog/neko.js"
 
-export default {
-  data: () => ({
-    rotate: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
-  }),
-  watch: {
-    rotate: {
-      handler: function () {
-        this.$nuxt.$emit("drag", this.rotate)
-      },
-      deep: true,
-    },
-  },
-  mounted() {
-    this.neko = makeNeko(".neko-canvas", 1, true)
-    this.rotate = this.neko.rotate
-    const animate = () => {
-      this.neko.updateRenderGraph()
-      requestAnimationFrame(animate)
-    }
-    animate()
-  },
-}
+const app = useNuxtApp()
+
+const canvas = ref()
+const neko = ref()
+
+watch(neko, (neko) => {
+  app.$guriguri(neko.rotate)
+}, {
+  deep: true
+})
+
+onMounted(() => {
+  neko.value = makeNeko(canvas.value, 1, true)
+  const animate = () => {
+    neko.value.updateRenderGraph()
+    requestAnimationFrame(animate)
+  }
+  animate()
+})
 </script>

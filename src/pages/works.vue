@@ -2,28 +2,53 @@
   <section class="section">
     <div class="container">
       <div class="titles">
-        <h2 class="title">Works</h2>
-        <p class="subtitle is-6 has-text-grey">つくったもの</p>
+        <h2 class="title">
+          Works
+        </h2>
+        <p class="subtitle is-6 has-text-grey">
+          つくったもの
+        </p>
       </div>
 
       <ul class="works">
-        <li v-for="app in apps" :key="app.id" class="work">
+        <li
+          v-for="app in apps"
+          :key="app.id"
+          class="work"
+        >
           <article>
             <div class="image-wrapper">
-              <img :src="app.screenshots[0].url" />
+              <img :src="app.screenshots[0].url">
             </div>
             <div class="content">
-              <h3 v-if="app.link" class="title is-4">
-                <a target="_blank" rel="nofollow noopener" :href="app.link">
-                  {{ app.title }}<fa class="icon" :icon="faLink" />
+              <h3
+                v-if="app.link"
+                class="title is-4"
+              >
+                <a
+                  class="flex items-center"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  :href="app.link"
+                >
+                  <span>{{ app.title }}</span>
+                  <span class="i-fa-solid-external-link-alt inline-block icon" />
                 </a>
               </h3>
-              <h3 v-else class="title is-4">
+              <h3
+                v-else
+                class="title is-4"
+              >
                 {{ app.title }}
               </h3>
               <div class="tags">
-                <span v-for="tag in app.tags" :key="tag.id" class="hashtag">
-                  <fa :icon="faHashtag" />{{ tag.title }}
+                <span
+                  v-for="tag in app.tags"
+                  :key="tag.id"
+                  class="hashtag flex items-center"
+                >
+                  <span class="i-fa-solid-hashtag" />
+                  <span>{{ tag.title }}</span>
                 </span>
               </div>
               <p>{{ app.description }}</p>
@@ -34,7 +59,9 @@
                 target="_blank"
                 rel="nofollow noopener"
               >
-                <span class="icon"><fa :icon="faGithub" /></span>
+                <span class="icon">
+                  <div class="i-fa-brands-github" />
+                </span>
                 <span>GitHub</span>
               </a>
             </div>
@@ -86,7 +113,7 @@
   margin-top: 0.25rem;
   margin-right: 0.4rem;
 }
-.hashtag > svg {
+.hashtag > span:first-child {
   margin-right: 0.1rem;
   color: var(--sub);
 }
@@ -115,12 +142,8 @@
 }
 </style>
 
-<script lang="ts">
-import Vue from "vue"
-import { Component } from "nuxt-property-decorator"
+<script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
-import { faHashtag, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
-import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 
 type App = {
   id: string
@@ -142,37 +165,29 @@ type Tag = {
   title: string
 }
 
-@Component
-export default class Works extends Vue {
-  public faHashtag = faHashtag
-  public faLink = faExternalLinkAlt
-  public faGithub = faGithubSquare
+const client = graphQLClient()
 
-  async asyncData(): Promise<{ apps: App[] }> {
-    const query = gql`
-      {
-        apps {
+const { data: apps } = await useAsyncData(async () => {
+  const query = gql`
+    {
+      apps {
+        id
+        title
+        tags {
           id
           title
-          tags {
-            id
-            title
-          }
-          screenshots {
-            id
-            url
-          }
-          description
-          link
-          source
         }
+        screenshots {
+          id
+          url
+        }
+        description
+        link
+        source
       }
-    `
-    const { apps } = await graphQLClient.request<{ apps: App[] }>(query)
-
-    return {
-      apps,
     }
-  }
-}
+  `
+  const { apps } = await client.request<{ apps: App[] }>(query)
+  return apps
+})
 </script>
