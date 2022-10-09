@@ -2,14 +2,14 @@
   <div class="level is-mobile">
     <div class="level-item has-text-centered">
       <NuxtLink to="/" class="item button is-primary is-outlined">
-        <canvas class="neko" width="40" height="40" /><span class="lnk"
+        <canvas ref="canvasNeko" class="neko" width="40" height="40" /><span class="lnk"
           >Home</span
         >
       </NuxtLink>
     </div>
     <div class="level-item">
       <NuxtLink to="/about" class="item button is-primary is-outlined">
-        <canvas class="kuma" width="40" height="40" /><span class="lnk"
+        <canvas ref="canvasKuma" class="kuma" width="40" height="40" /><span class="lnk"
           >About</span
         >
       </NuxtLink>
@@ -17,14 +17,14 @@
 
     <div class="level-item">
       <NuxtLink to="/works" class="item button is-primary is-outlined">
-        <canvas class="usagi" width="40" height="40" /><span class="lnk"
+        <canvas ref="canvasUsagi" class="usagi" width="40" height="40" /><span class="lnk"
           >Works</span
         >
       </NuxtLink>
     </div>
     <div class="level-item">
       <NuxtLink to="/contact" class="item button is-primary is-outlined">
-        <canvas class="sakana" width="40" height="40" /><span class="lnk"
+        <canvas ref="canvasSakana" class="sakana" width="40" height="40" /><span class="lnk"
           >Contact</span
         >
       </NuxtLink>
@@ -78,11 +78,16 @@ import { makeKuma } from "~/zdog/kuma.js"
 import { makeUsagi } from "~/zdog/usagi.js"
 import { makeSakana } from "~/zdog/sakana.js"
 
+const canvasNeko = ref()
+const canvasKuma = ref()
+const canvasUsagi = ref()
+const canvasSakana = ref()
+
 onMounted(() => {
-  const _neko = makeNeko(".neko", 0.14, true)
-  const _kuma = makeKuma(".kuma", 0.18, true)
-  const _usagi = makeUsagi(".usagi", 0.14, true)
-  const _sakana = makeSakana(".sakana", 0.14, true)
+  const _neko = makeNeko(canvasNeko.value, 0.14, true)
+  const _kuma = makeKuma(canvasKuma.value, 0.18, true)
+  const _usagi = makeUsagi(canvasUsagi.value, 0.14, true)
+  const _sakana = makeSakana(canvasSakana.value, 0.14, true)
 
 //  const animate = () => {
 //    if (this.rotate) {
