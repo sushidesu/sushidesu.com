@@ -22,6 +22,9 @@ export default defineNuxtConfig({
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ],
   },
+  modules: [
+    ["@unocss/nuxt", { uno: true, icons: true, attributify: true }]
+  ],
 })
 
 // import pkg from './package'
