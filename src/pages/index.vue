@@ -1,6 +1,6 @@
 <template>
   <div>
-    <neko class="main-neko" />
+    <Neko class="main-neko" />
     <div class="background" />
   </div>
 </template>
@@ -22,13 +22,3 @@
   height: 100%;
 }
 </style>
-
-<script>
-import Neko from "~/components/Neko.vue"
-
-export default {
-  components: {
-    Neko,
-  },
-}
-</script>
