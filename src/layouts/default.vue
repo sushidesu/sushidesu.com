@@ -1,7 +1,9 @@
 <template>
   <div class="site-all">
     <NavBar class="nav-bar" />
-    <slot class="main" />
+    <main class="main">
+      <slot />
+    </main>
     <MenuBar class="menu-bar" />
   </div>
 </template>
