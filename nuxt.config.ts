@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     }
   },
   css: [
-   '~/common/color.css'
+   '~/common/color.css',
+   "bulma/css/bulma.min.css"
   ],
   head: {
     title: "sushidesu.com",
