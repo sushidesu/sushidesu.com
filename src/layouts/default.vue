@@ -1,8 +1,8 @@
 <template>
   <div class="site-all">
-    <nav-bar class="nav-bar" />
+    <NavBar class="nav-bar" />
     <slot class="main" />
-    <menu-bar class="menu-bar" />
+    <MenuBar class="menu-bar" />
   </div>
 </template>
 
@@ -55,15 +55,3 @@ html {
   bottom: 0;
 }
 </style>
-
-<script>
-import NavBar from "~/components/NavBar.vue"
-import MenuBar from "~/components/MenuBar.vue"
-
-export default {
-  components: {
-    NavBar,
-    MenuBar,
-  },
-}
-</script>
