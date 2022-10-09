@@ -14,16 +14,18 @@
             </div>
             <div class="content">
               <h3 v-if="app.link" class="title is-4">
-                <a target="_blank" rel="nofollow noopener" :href="app.link">
-                  {{ app.title }}<fa class="icon" :icon="faExternalLinkAlt" />
+                <a class="flex items-center" target="_blank" rel="nofollow noopener" :href="app.link">
+                  <span>{{ app.title }}</span>
+                  <span class="i-fa-solid-external-link-alt inline-block icon" />
                 </a>
               </h3>
               <h3 v-else class="title is-4">
                 {{ app.title }}
               </h3>
               <div class="tags">
-                <span v-for="tag in app.tags" :key="tag.id" class="hashtag">
-                  <fa :icon="faHashtag" />{{ tag.title }}
+                <span v-for="tag in app.tags" :key="tag.id" class="hashtag flex items-center">
+                  <span class="i-fa-solid-hashtag" />
+                  <span>{{ tag.title }}</span>
                 </span>
               </div>
               <p>{{ app.description }}</p>
@@ -34,7 +36,9 @@
                 target="_blank"
                 rel="nofollow noopener"
               >
-                <span class="icon"><fa :icon="faGithubSquare" /></span>
+                <span class="icon">
+                  <div class="i-fa-brands-github" />
+                </span>
                 <span>GitHub</span>
               </a>
             </div>
@@ -86,7 +90,7 @@
   margin-top: 0.25rem;
   margin-right: 0.4rem;
 }
-.hashtag > svg {
+.hashtag > span:first-child {
   margin-right: 0.1rem;
   color: var(--sub);
 }
@@ -117,8 +121,6 @@
 
 <script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
-import { faHashtag, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
-import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 
 type App = {
   id: string

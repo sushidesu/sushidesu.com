@@ -23,7 +23,7 @@
                 rel="nofollow noopener"
               >
                 <span class="icon">
-                  <fa :icon="faGithub" />
+                  <div class="i-fa-brands-github" />
                 </span>
                 <span>GitHub</span>
               </a>
@@ -35,7 +35,7 @@
                 rel="nofollow noopener"
               >
                 <span class="icon">
-                  <fa :icon="faTwitter" />
+                  <div class="i-fa-brands-twitter" />
                 </span>
                 <span>Twitter</span>
               </a>
@@ -47,7 +47,7 @@
                 rel="nofollow noopener"
               >
                 <span class="icon">
-                  <fa :icon="faSearch" />
+                  <div class="i-fa-solid-search" />
                 </span>
                 <span>Qiita</span>
               </a>
@@ -98,8 +98,6 @@
 
 <script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
-import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 type Asset = {
   id: string
