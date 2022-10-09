@@ -2,7 +2,7 @@
   <nav class="navbar is-spaced">
     <div class="navbar-brand">
       <div class="navbar-item">
-        <logo class="logo" />
+        <Logo class="logo" />
         <NuxtLink to="/">
           <span class="subtitle">sushidesu.com</span>
         </NuxtLink>
@@ -17,13 +17,3 @@
   cursor: pointer;
 }
 </style>
-
-<script>
-import Logo from "~/components/Logo.vue"
-
-export default {
-  components: {
-    Logo,
-  },
-}
-</script>
