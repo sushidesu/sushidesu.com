@@ -5,10 +5,11 @@
   "author": "sushidesu",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
     "fix": "yarn fix:lint && yarn fix:format",
     "fix:lint": "yarn eslint --fix \"./src/**/*.{js,ts,vue}\"",
     "fix:format": "yarn prettier --write \"./src/**/*.{js,ts,vue}\""
@@ -24,10 +25,9 @@
     "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
-    "nuxt": "^2.14.11",
+    "nuxt": "3.0.0-rc.11",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-property-decorator": "^2.8.8",
-    "vue": "^2.6.12",
     "vuex": "^3.6.0",
     "zdog": "^1.1.2"
   },
