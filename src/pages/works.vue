@@ -15,7 +15,7 @@
             <div class="content">
               <h3 v-if="app.link" class="title is-4">
                 <a target="_blank" rel="nofollow noopener" :href="app.link">
-                  {{ app.title }}<fa class="icon" :icon="faLink" />
+                  {{ app.title }}<fa class="icon" :icon="faExternalLinkAlt" />
                 </a>
               </h3>
               <h3 v-else class="title is-4">
@@ -34,7 +34,7 @@
                 target="_blank"
                 rel="nofollow noopener"
               >
-                <span class="icon"><fa :icon="faGithub" /></span>
+                <span class="icon"><fa :icon="faGithubSquare" /></span>
                 <span>GitHub</span>
               </a>
             </div>
@@ -115,9 +115,7 @@
 }
 </style>
 
-<script lang="ts">
-import Vue from "vue"
-import { Component } from "nuxt-property-decorator"
+<script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
 import { faHashtag, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
@@ -142,37 +140,29 @@ type Tag = {
   title: string
 }
 
-@Component
-export default class Works extends Vue {
-  public faHashtag = faHashtag
-  public faLink = faExternalLinkAlt
-  public faGithub = faGithubSquare
+const client = graphQLClient()
 
-  async asyncData(): Promise<{ apps: App[] }> {
-    const query = gql`
-      {
-        apps {
+const { data: apps } = await useAsyncData(async () => {
+  const query = gql`
+    {
+      apps {
+        id
+        title
+        tags {
           id
           title
-          tags {
-            id
-            title
-          }
-          screenshots {
-            id
-            url
-          }
-          description
-          link
-          source
         }
+        screenshots {
+          id
+          url
+        }
+        description
+        link
+        source
       }
-    `
-    const { apps } = await graphQLClient.request<{ apps: App[] }>(query)
-
-    return {
-      apps,
     }
-  }
-}
+  `
+  const { apps } = await client.request<{ apps: App[] }>(query)
+  return apps
+})
 </script>

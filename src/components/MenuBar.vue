@@ -72,45 +72,47 @@
 }
 </style>
 
-<script>
+<script setup>
 import { makeNeko } from "~/zdog/neko.js"
 import { makeKuma } from "~/zdog/kuma.js"
 import { makeUsagi } from "~/zdog/usagi.js"
 import { makeSakana } from "~/zdog/sakana.js"
 
-export default {
-  mounted() {
-    const neko = makeNeko(".neko", 0.14, true)
-    const kuma = makeKuma(".kuma", 0.18, true)
-    const usagi = makeUsagi(".usagi", 0.14, true)
-    const sakana = makeSakana(".sakana", 0.14, true)
+onMounted(() => {
+  const neko = makeNeko(".neko", 0.14, true)
+  const kuma = makeKuma(".kuma", 0.18, true)
+  const usagi = makeUsagi(".usagi", 0.14, true)
+  const sakana = makeSakana(".sakana", 0.14, true)
 
-    const animate = () => {
-      if (this.rotate) {
-        neko.rotate.set(this.rotate)
-        kuma.rotate.set(this.rotate)
-        usagi.rotate.set(this.rotate)
-        sakana.rotate.set(this.rotate)
-      }
-
-      neko.updateRenderGraph()
-      kuma.updateRenderGraph()
-      usagi.updateRenderGraph()
-      sakana.updateRenderGraph()
-      requestAnimationFrame(animate)
+  const animate = () => {
+    if (this.rotate) {
+      neko.rotate.set(this.rotate)
+      kuma.rotate.set(this.rotate)
+      usagi.rotate.set(this.rotate)
+      sakana.rotate.set(this.rotate)
     }
-    animate()
-  },
-  created() {
-    this.setListener()
-  },
-  methods: {
-    setListener() {
-      this.$nuxt.$on("drag", this.onNekoDrag)
-    },
-    onNekoDrag(rotate) {
-      this.rotate = rotate
-    },
-  },
-}
+
+    neko.updateRenderGraph()
+    kuma.updateRenderGraph()
+    usagi.updateRenderGraph()
+    sakana.updateRenderGraph()
+    requestAnimationFrame(animate)
+  }
+  animate()
+})
+
+
+// export default {
+//   created() {
+//     this.setListener()
+//   },
+//   methods: {
+//     setListener() {
+//       this.$nuxt.$on("drag", this.onNekoDrag)
+//     },
+//     onNekoDrag(rotate) {
+//       this.rotate = rotate
+//     },
+//   },
+// }
 </script>

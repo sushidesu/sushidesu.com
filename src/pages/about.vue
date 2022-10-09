@@ -4,7 +4,7 @@
       <div class="container">
         <div class="content">
           <h2 class="title">About</h2>
-          <div v-for="about in abouts" :key="about.id" class="about">
+          <div v-for="about in data.abouts" :key="about.id" class="about">
             <div class="thmb">
               <img :src="about.icon.url" />
             </div>
@@ -96,8 +96,7 @@
 }
 </style>
 
-<script lang="ts">
-import Vue from "vue"
+<script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -108,6 +107,7 @@ type Asset = {
 }
 
 type About = {
+  id: string
   name: string
   description: string
   icon: Asset
@@ -116,34 +116,29 @@ type About = {
   qiitaLink?: string
 }
 
-export default Vue.extend({
-  asyncData: async () => {
-    const query = gql`
-      {
-        abouts {
-          id
-          name
-          description
-          icon {
-            id
-            url
-          }
-          githubLink
-          twitterLink
-          qiitaLink
-        }
-      }
-    `
-    const { abouts } = await graphQLClient.request<{ abouts: About[] }>(query)
+const client = graphQLClient()
 
-    return {
-      abouts,
+const { data } = await useAsyncData(async () => {
+  const query = gql`
+    {
+      abouts {
+        id
+        name
+        description
+        icon {
+          id
+          url
+        }
+        githubLink
+        twitterLink
+        qiitaLink
+      }
     }
-  },
-  data: () => ({
-    faTwitter,
-    faGithub,
-    faSearch,
-  }),
+  `
+  const { abouts } = await client.request<{ abouts: About[] }>(query)
+
+  return {
+    abouts,
+  }
 })
 </script>
