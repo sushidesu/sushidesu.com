@@ -3,10 +3,16 @@
     <section class="section">
       <div class="container">
         <div class="content">
-          <h2 class="title">About</h2>
-          <div v-for="about in data.abouts" :key="about.id" class="about">
+          <h2 class="title">
+            About
+          </h2>
+          <div
+            v-for="about in data.abouts"
+            :key="about.id"
+            class="about"
+          >
             <div class="thmb">
-              <img :src="about.icon.url" />
+              <img :src="about.icon.url">
             </div>
             <p class="name">
               {{ about.name }}

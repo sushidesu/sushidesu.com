@@ -1,5 +1,9 @@
 <template>
-  <canvas width="60" height="60" class="logo-canvas" />
+  <canvas
+    width="60"
+    height="60"
+    class="logo-canvas"
+  />
 </template>
 
 <script setup>

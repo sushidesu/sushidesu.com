@@ -2,28 +2,51 @@
   <section class="section">
     <div class="container">
       <div class="titles">
-        <h2 class="title">Works</h2>
-        <p class="subtitle is-6 has-text-grey">つくったもの</p>
+        <h2 class="title">
+          Works
+        </h2>
+        <p class="subtitle is-6 has-text-grey">
+          つくったもの
+        </p>
       </div>
 
       <ul class="works">
-        <li v-for="app in apps" :key="app.id" class="work">
+        <li
+          v-for="app in apps"
+          :key="app.id"
+          class="work"
+        >
           <article>
             <div class="image-wrapper">
-              <img :src="app.screenshots[0].url" />
+              <img :src="app.screenshots[0].url">
             </div>
             <div class="content">
-              <h3 v-if="app.link" class="title is-4">
-                <a class="flex items-center" target="_blank" rel="nofollow noopener" :href="app.link">
+              <h3
+                v-if="app.link"
+                class="title is-4"
+              >
+                <a
+                  class="flex items-center"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  :href="app.link"
+                >
                   <span>{{ app.title }}</span>
                   <span class="i-fa-solid-external-link-alt inline-block icon" />
                 </a>
               </h3>
-              <h3 v-else class="title is-4">
+              <h3
+                v-else
+                class="title is-4"
+              >
                 {{ app.title }}
               </h3>
               <div class="tags">
-                <span v-for="tag in app.tags" :key="tag.id" class="hashtag flex items-center">
+                <span
+                  v-for="tag in app.tags"
+                  :key="tag.id"
+                  class="hashtag flex items-center"
+                >
                   <span class="i-fa-solid-hashtag" />
                   <span>{{ tag.title }}</span>
                 </span>

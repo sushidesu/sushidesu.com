@@ -1,6 +1,11 @@
 <template>
   <div>
-    <canvas ref="canvas" width="320" height="320" class="neko-canvas" />
+    <canvas
+      ref="canvas"
+      width="320"
+      height="320"
+      class="neko-canvas"
+    />
     <!-- <input v-model="neko.rotate.x" /> -->
   </div>
 </template>
