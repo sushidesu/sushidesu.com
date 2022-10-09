@@ -11,33 +11,50 @@
 }
 </style>
 
-<script>
+<script setup>
 import { makeNeko } from "~/zdog/neko.js"
 
-export default {
-  data: () => ({
-    rotate: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
-  }),
-  watch: {
-    rotate: {
-      handler: function () {
-        this.$nuxt.$emit("drag", this.rotate)
-      },
-      deep: true,
-    },
-  },
-  mounted() {
-    this.neko = makeNeko(".neko-canvas", 1, true)
-    this.rotate = this.neko.rotate
-    const animate = () => {
-      this.neko.updateRenderGraph()
-      requestAnimationFrame(animate)
-    }
-    animate()
-  },
-}
+const neko = ref()
+const rotate = ref({
+  x: 0,
+  y: 0,
+  z: 0,
+})
+
+onMounted(() => {
+  neko.value = makeNeko(".neko-canvas", 1, true)
+  rotate.value = neko.value.rotate
+  const animate = () => {
+    neko.value.updateRenderGraph()
+    requestAnimationFrame(animate)
+  }
+  animate()
+})
+
+//export default {
+//  data: () => ({
+//    rotate: {
+//      x: 0,
+//      y: 0,
+//      z: 0,
+//    },
+//  }),
+//  watch: {
+//    rotate: {
+//      handler: function () {
+//        this.$nuxt.$emit("drag", this.rotate)
+//      },
+//      deep: true,
+//    },
+//  },
+//  mounted() {
+//    this.neko = makeNeko(".neko-canvas", 1, true)
+//    this.rotate = this.neko.rotate
+//    const animate = () => {
+//      this.neko.updateRenderGraph()
+//      requestAnimationFrame(animate)
+//    }
+//    animate()
+//  },
+//}
 </script>
