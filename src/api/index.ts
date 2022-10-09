@@ -1,9 +1,12 @@
-// import { createClient } from "contentful";
 import { GraphQLClient } from "graphql-request"
 export { gql } from "graphql-request"
 
-if (!process.env.GRAPHCMS_ENDPOINT) {
-  throw new Error()
+export const graphQLClient = () => {
+  const config = useRuntimeConfig()
+
+  if (!config.public.hygraphEndpoint) {
+    throw new Error()
+  }
+  return new GraphQLClient(config.public.hygraphEndpoint)
 }
 
-export const graphQLClient = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT)

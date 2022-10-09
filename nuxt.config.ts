@@ -1,7 +1,12 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   target: "static",
-  srcDir: "src/"
+  srcDir: "src/",
+  runtimeConfig: {
+    public: {
+      hygraphEndpoint: process.env.GRAPHCMS_ENDPOINT
+    }
+  }
 })
 
 // import pkg from './package'
