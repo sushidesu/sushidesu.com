@@ -2,8 +2,11 @@
   <canvas ref="canvas" width="40" height="40" />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { makeKuma } from "~/zdog/kuma.js"
+
+const props = defineProps<{ zoom?: number }>()
+const zoom = props.zoom ?? 1
 
 const app = useNuxtApp()
 const canvas = ref()
@@ -17,6 +20,6 @@ watchEffect(() => {
 })
 
 onMounted(() => {
-  kuma.value = makeKuma(canvas.value, 0.18, true)
+  kuma.value = makeKuma(canvas.value, 0.18 * zoom, true)
 })
 </script>

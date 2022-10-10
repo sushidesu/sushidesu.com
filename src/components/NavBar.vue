@@ -7,11 +7,36 @@
           <span class="subtitle">sushidesu.com</span>
         </NuxtLink>
       </div>
-      <button v-if="route.path !== '/'" class="navbar-burger button is-medium">
-        <div class="icon i-fluent-emoji-flat-hamburger" />
+      <button
+        v-if="!isHome"
+        class="navbar-burger is-right dropdown"
+        :class="menuClass"
+        @click="toggle"
+      >
+        <div class="icon is-medium i-fluent-emoji-flat-hamburger" />
+        <div class="dropdown-menu">
+          <div v-if="!isHome" class="dropdown-content">
+            <NuxtLink class="dropdown-item" to="/">
+              <MenuNeko :zoom="0.8" />
+              <p>Home</p>
+            </NuxtLink>
+            <NuxtLink class="dropdown-item" to="/about">
+              <MenuKuma :zoom="0.8" />
+              <p>About</p>
+            </NuxtLink>
+            <NuxtLink class="dropdown-item" to="/works">
+              <MenuUsagi :zoom="0.8" />
+              <p>Works</p>
+            </NuxtLink>
+            <NuxtLink class="dropdown-item" to="/contact">
+              <MenuSakana :zoom="0.8" />
+              <p>Contact</p>
+            </NuxtLink>
+          </div>
+        </div>
       </button>
     </div>
-    <div class="navbar-menu" v-if="route.path !== '/'">
+    <div v-if="!isHome" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="flex gap-2">
@@ -36,6 +61,15 @@
 
 <script lang="ts" setup>
 const route = useRoute()
+const isHome = computed(() => route.path === "/")
+
+const isOpen = ref(false)
+const menuClass = computed(() => ({
+  "is-active": isOpen.value,
+}))
+function toggle() {
+  isOpen.value = !isOpen.value
+}
 </script>
 
 <style scoped>
@@ -45,5 +79,11 @@ const route = useRoute()
 .navbar-burger {
   border-radius: 14px;
   margin-right: 0.8rem;
+}
+.dropdown-item {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  column-gap: 0.25rem;
 }
 </style>

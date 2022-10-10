@@ -2,8 +2,11 @@
   <canvas ref="canvas" width="40" height="40" />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { makeUsagi } from "~/zdog/usagi.js"
+
+const props = defineProps<{ zoom?: number }>()
+const zoom = props.zoom ?? 1
 
 const app = useNuxtApp()
 const canvas = ref()
@@ -17,6 +20,6 @@ watchEffect(() => {
 })
 
 onMounted(() => {
-  usagi.value = makeUsagi(canvas.value, 0.14, true)
+  usagi.value = makeUsagi(canvas.value, 0.14 * zoom, true)
 })
 </script>
