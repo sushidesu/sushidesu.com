@@ -22,9 +22,6 @@ const router = useRoute()
 
 .menu-bar {
   padding: 20px;
-  border-radius: 0 0px 14px 14px;
-  background-color: rgba(242, 255, 252, 0.94);
-  border-top: 1px solid var(--main);
   margin: 0;
 }
 
@@ -40,10 +37,10 @@ html {
 <style scoped>
 .site-all {
   background-color: var(--white);
+  min-height: calc(100vh - 16px);
+  min-height: calc(100dvh - 16px);
+  margin: 8px 10px;
   border-radius: 14px;
-  margin: 8px 14px;
-  padding-bottom: 2px;
-  min-height: 98vh;
   display: flex;
   flex-direction: column;
 }
