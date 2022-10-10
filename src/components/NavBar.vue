@@ -11,14 +11,22 @@
         <div class="icon i-fluent-emoji-flat-hamburger" />
       </button>
     </div>
-    <div class="navbar-menu">
+    <div class="navbar-menu" v-if="route.path !== '/'">
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <button class="button">Home</button>
-            <button class="button">About</button>
-            <button class="button">Works</button>
-            <button class="button">Contact</button>
+          <div class="flex gap-2">
+            <MenuItem text="Home" path="/">
+              <MenuNeko />
+            </MenuItem>
+            <MenuItem text="About" path="/about">
+              <MenuKuma />
+            </MenuItem>
+            <MenuItem text="Works" path="/works">
+              <MenuUsagi />
+            </MenuItem>
+            <MenuItem text="Contact" path="/contact">
+              <MenuSakana />
+            </MenuItem>
           </div>
         </div>
       </div>
