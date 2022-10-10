@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Zdog from "zdog"
 import { colors } from "~/common/color"
 
