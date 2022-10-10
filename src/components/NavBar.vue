@@ -7,7 +7,7 @@
           <span class="subtitle">sushidesu.com</span>
         </NuxtLink>
       </div>
-      <button class="navbar-burger button is-medium" v-if="route.path !== '/'">
+      <button v-if="route.path !== '/'" class="navbar-burger button is-medium">
         <div class="icon i-fluent-emoji-flat-hamburger" />
       </button>
     </div>
@@ -36,6 +36,6 @@ const route = useRoute()
 }
 .navbar-burger {
   border-radius: 14px;
-  margin-right: .8rem;
+  margin-right: 0.8rem;
 }
 </style>

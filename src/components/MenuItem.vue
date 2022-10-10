@@ -2,10 +2,7 @@
   <div class="level-item has-text-centered">
     <NuxtLink :to="props.path" class="item button is-primary is-outlined">
       <slot />
-      <span
-        class="lnk"
-        >{{ props.text }}</span
-      >
+      <span class="lnk">{{ props.text }}</span>
     </NuxtLink>
   </div>
 </template>

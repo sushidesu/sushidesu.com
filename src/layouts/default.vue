@@ -4,7 +4,7 @@
     <main class="main">
       <slot />
     </main>
-    <MenuBar class="menu-bar" v-if="router.path === '/'" />
+    <MenuBar v-if="router.path === '/'" class="menu-bar" />
   </div>
 </template>
 
