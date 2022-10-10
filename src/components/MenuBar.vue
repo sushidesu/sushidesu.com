@@ -1,16 +1,16 @@
 <template>
   <div class="level is-mobile">
-    <MenuItem text="Home" path="/">
+    <MenuLink text="Home" path="/">
       <MenuNeko />
-    </MenuItem>
-    <MenuItem text="About" path="/about">
+    </MenuLink>
+    <MenuLink text="About" path="/about">
       <MenuKuma />
-    </MenuItem>
-    <MenuItem text="Works" path="/works">
+    </MenuLink>
+    <MenuLink text="Works" path="/works">
       <MenuUsagi />
-    </MenuItem>
-    <MenuItem text="Contact" path="/contact">
+    </MenuLink>
+    <MenuLink text="Contact" path="/contact">
       <MenuSakana />
-    </MenuItem>
+    </MenuLink>
   </div>
 </template>

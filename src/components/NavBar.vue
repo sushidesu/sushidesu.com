@@ -7,51 +7,54 @@
           <span class="subtitle">sushidesu.com</span>
         </NuxtLink>
       </div>
-      <button
-        v-if="!isHome"
-        class="navbar-burger is-right dropdown"
-        :class="menuClass"
-        @click="toggle"
-      >
-        <div class="icon is-medium i-fluent-emoji-flat-hamburger" />
-        <div class="dropdown-menu">
-          <div v-if="!isHome" class="dropdown-content">
-            <NuxtLink class="dropdown-item" to="/">
+      <Menu v-if="!isHome">
+        <MenuButton class="navbar-burger dropdown is-right">
+          <div class="icon is-medium i-fluent-emoji-flat-hamburger" />
+        </MenuButton>
+        <MenuItems class="dropdown-menu dropdown-content">
+          <MenuItem v-slot="{ close }">
+            <NuxtLink class="dropdown-item" to="/" @click="close">
               <MenuNeko :zoom="0.8" />
               <p>Home</p>
             </NuxtLink>
-            <NuxtLink class="dropdown-item" to="/about">
+          </MenuItem>
+          <MenuItem v-slot="{ close }">
+            <NuxtLink class="dropdown-item" to="/about" @click="close">
               <MenuKuma :zoom="0.8" />
               <p>About</p>
             </NuxtLink>
-            <NuxtLink class="dropdown-item" to="/works">
+          </MenuItem>
+          <MenuItem v-slot="{ close }">
+            <NuxtLink class="dropdown-item" to="/works" @click="close">
               <MenuUsagi :zoom="0.8" />
               <p>Works</p>
             </NuxtLink>
-            <NuxtLink class="dropdown-item" to="/contact">
+          </MenuItem>
+          <MenuItem v-slot="{ close }">
+            <NuxtLink class="dropdown-item" to="/contact" @click="close">
               <MenuSakana :zoom="0.8" />
               <p>Contact</p>
             </NuxtLink>
-          </div>
-        </div>
-      </button>
+          </MenuItem>
+        </MenuItems>
+      </Menu>
     </div>
     <div v-if="!isHome" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="flex gap-2">
-            <MenuItem text="Home" path="/">
+            <MenuLink text="Home" path="/">
               <MenuNeko />
-            </MenuItem>
-            <MenuItem text="About" path="/about">
+            </MenuLink>
+            <MenuLink text="About" path="/about">
               <MenuKuma />
-            </MenuItem>
-            <MenuItem text="Works" path="/works">
+            </MenuLink>
+            <MenuLink text="Works" path="/works">
               <MenuUsagi />
-            </MenuItem>
-            <MenuItem text="Contact" path="/contact">
+            </MenuLink>
+            <MenuLink text="Contact" path="/contact">
               <MenuSakana />
-            </MenuItem>
+            </MenuLink>
           </div>
         </div>
       </div>
@@ -60,16 +63,10 @@
 </template>
 
 <script lang="ts" setup>
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue"
+
 const route = useRoute()
 const isHome = computed(() => route.path === "/")
-
-const isOpen = ref(false)
-const menuClass = computed(() => ({
-  "is-active": isOpen.value,
-}))
-function toggle() {
-  isOpen.value = !isOpen.value
-}
 </script>
 
 <style scoped>
@@ -79,6 +76,11 @@ function toggle() {
 .navbar-burger {
   border-radius: 14px;
   margin-right: 0.8rem;
+}
+.dropdown-menu {
+  left: auto;
+  right: 0;
+  display: block;
 }
 .dropdown-item {
   display: flex;

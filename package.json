@@ -15,7 +15,7 @@
     "fix:format": "yarn prettier --write \"./src/**/*.{js,ts,vue}\""
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.3",
+    "@headlessui/vue": "^0.0.0-insiders.0e147a0",
     "@iconify/json": "^2.1.119",
     "@nuxtjs/google-gtag": "^1.0.4",
     "@unocss/nuxt": "^0.45.28",
