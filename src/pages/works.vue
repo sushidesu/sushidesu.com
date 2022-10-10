@@ -124,11 +124,6 @@ const { data: apps } = await useAsyncData(async () => {
   row-gap: 32px;
   column-gap: 32px;
 }
-@media screen and (min-width: 834px) {
-  .works {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
 .work {
   position: relative;
   background-color: #fff;
@@ -177,5 +172,11 @@ const { data: apps } = await useAsyncData(async () => {
   bottom: 1rem;
   right: 1rem;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+@media screen and (min-width: 834px) {
+  .works {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 </style>
