@@ -7,13 +7,13 @@
       </div>
 
       <ul class="works">
-        <li v-for="app in apps" :key="app.id" class="work">
-          <article>
+        <li v-for="app in apps" :key="app.id" class="h-full">
+          <article class="work">
             <div class="image-wrapper">
               <img :src="app.screenshots[0].url" />
             </div>
             <div class="content">
-              <h3 v-if="app.link" class="title is-4">
+              <h3 v-if="app.link" class="title is-5">
                 <a
                   class="flex items-center"
                   target="_blank"
@@ -26,7 +26,7 @@
                   />
                 </a>
               </h3>
-              <h3 v-else class="title is-4">
+              <h3 v-else class="title is-5">
                 {{ app.title }}
               </h3>
               <div class="tags">
@@ -120,12 +120,13 @@ const { data: apps } = await useAsyncData(async () => {
 }
 .works {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   row-gap: 32px;
   column-gap: 32px;
 }
 .work {
   position: relative;
+  height: 100%;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 5px 10px var(--main-shadow);
@@ -172,11 +173,5 @@ const { data: apps } = await useAsyncData(async () => {
   bottom: 1rem;
   right: 1rem;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.08);
-}
-
-@media screen and (min-width: 834px) {
-  .works {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }
 </style>
