@@ -1,11 +1,6 @@
 <template>
   <div>
-    <canvas
-      ref="canvas"
-      width="320"
-      height="320"
-      class="neko-canvas"
-    />
+    <canvas ref="canvas" width="320" height="320" class="neko-canvas" />
     <!-- <input v-model="neko.rotate.x" /> -->
   </div>
 </template>
@@ -24,11 +19,15 @@ const app = useNuxtApp()
 const canvas = ref()
 const neko = ref()
 
-watch(neko, (neko) => {
-  app.$guriguri(neko.rotate)
-}, {
-  deep: true
-})
+watch(
+  neko,
+  (neko) => {
+    app.$guriguri(neko.rotate)
+  },
+  {
+    deep: true,
+  }
+)
 
 onMounted(() => {
   neko.value = makeNeko(canvas.value, 1, true)

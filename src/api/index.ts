@@ -9,4 +9,3 @@ export const graphQLClient = () => {
   }
   return new GraphQLClient(config.public.hygraphEndpoint)
 }
-
