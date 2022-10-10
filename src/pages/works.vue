@@ -2,19 +2,15 @@
   <section class="section">
     <div class="container">
       <div class="titles">
-        <h2 class="title">
-          Works
-        </h2>
-        <p class="subtitle is-6 has-text-grey">
-          つくったもの
-        </p>
+        <h2 class="title">Works</h2>
+        <p class="subtitle is-6 has-text-grey">つくったもの</p>
       </div>
 
       <ul class="works">
         <li v-for="app in apps" :key="app.id" class="work">
           <article>
             <div class="image-wrapper">
-              <img :src="app.screenshots[0].url">
+              <img :src="app.screenshots[0].url" />
             </div>
             <div class="content">
               <h3 v-if="app.link" class="title is-4">

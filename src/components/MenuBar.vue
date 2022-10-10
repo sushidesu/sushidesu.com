@@ -4,14 +4,16 @@
       <NuxtLink to="/" class="item button is-primary is-outlined">
         <canvas ref="canvasNeko" class="neko" width="40" height="40" /><span
           class="lnk"
-        >Home</span>
+          >Home</span
+        >
       </NuxtLink>
     </div>
     <div class="level-item">
       <NuxtLink to="/about" class="item button is-primary is-outlined">
         <canvas ref="canvasKuma" class="kuma" width="40" height="40" /><span
           class="lnk"
-        >About</span>
+          >About</span
+        >
       </NuxtLink>
     </div>
 
@@ -19,14 +21,16 @@
       <NuxtLink to="/works" class="item button is-primary is-outlined">
         <canvas ref="canvasUsagi" class="usagi" width="40" height="40" /><span
           class="lnk"
-        >Works</span>
+          >Works</span
+        >
       </NuxtLink>
     </div>
     <div class="level-item">
       <NuxtLink to="/contact" class="item button is-primary is-outlined">
         <canvas ref="canvasSakana" class="sakana" width="40" height="40" /><span
           class="lnk"
-        >Contact</span>
+          >Contact</span
+        >
       </NuxtLink>
     </div>
   </div>
