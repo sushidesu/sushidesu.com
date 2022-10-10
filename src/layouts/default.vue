@@ -4,9 +4,13 @@
     <main class="main">
       <slot />
     </main>
-    <MenuBar class="menu-bar" />
+    <MenuBar class="menu-bar" v-if="router.path === '/'" />
   </div>
 </template>
+
+<script lang="ts" setup>
+const router = useRoute()
+</script>
 
 <style>
 *,
