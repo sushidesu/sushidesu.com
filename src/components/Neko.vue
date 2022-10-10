@@ -4,13 +4,6 @@
     <!-- <input v-model="neko.rotate.x" /> -->
   </div>
 </template>
-
-<style scoped>
-.neko-canvas {
-  cursor: move;
-}
-</style>
-
 <script setup>
 import { makeNeko } from "~/zdog/neko.js"
 
@@ -38,3 +31,9 @@ onMounted(() => {
   animate()
 })
 </script>
+
+<style scoped>
+.neko-canvas {
+  cursor: move;
+}
+</style>

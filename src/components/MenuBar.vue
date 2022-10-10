@@ -4,16 +4,14 @@
       <NuxtLink to="/" class="item button is-primary is-outlined">
         <canvas ref="canvasNeko" class="neko" width="40" height="40" /><span
           class="lnk"
-          >Home</span
-        >
+        >Home</span>
       </NuxtLink>
     </div>
     <div class="level-item">
       <NuxtLink to="/about" class="item button is-primary is-outlined">
         <canvas ref="canvasKuma" class="kuma" width="40" height="40" /><span
           class="lnk"
-          >About</span
-        >
+        >About</span>
       </NuxtLink>
     </div>
 
@@ -21,60 +19,18 @@
       <NuxtLink to="/works" class="item button is-primary is-outlined">
         <canvas ref="canvasUsagi" class="usagi" width="40" height="40" /><span
           class="lnk"
-          >Works</span
-        >
+        >Works</span>
       </NuxtLink>
     </div>
     <div class="level-item">
       <NuxtLink to="/contact" class="item button is-primary is-outlined">
         <canvas ref="canvasSakana" class="sakana" width="40" height="40" /><span
           class="lnk"
-          >Contact</span
-        >
+        >Contact</span>
       </NuxtLink>
     </div>
   </div>
 </template>
-
-<style css scoped>
-.item {
-  height: 60px;
-  border-radius: 12px;
-  width: 100%;
-}
-
-.lnk {
-  font-weight: bold;
-  font-size: 0.6rem;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-}
-@media all and (max-width: 768px) {
-  .level-item .item.button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .level.is-mobile .level-item:not(:last-child) {
-    margin-right: 0.2rem;
-  }
-
-  .menu-bar {
-    padding: 10px 4px;
-  }
-}
-
-@media all and (min-width: 769px) {
-  .lnk {
-    font-size: 1rem;
-  }
-}
-</style>
 
 <script setup>
 import { makeNeko } from "~/zdog/neko.js"
@@ -119,3 +75,43 @@ onMounted(() => {
   sakana.value = makeSakana(canvasSakana.value, 0.14, true)
 })
 </script>
+
+<style css scoped>
+.item {
+  height: 60px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.lnk {
+  font-weight: bold;
+  font-size: 0.6rem;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+@media all and (max-width: 768px) {
+  .level-item .item.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .level.is-mobile .level-item:not(:last-child) {
+    margin-right: 0.2rem;
+  }
+
+  .menu-bar {
+    padding: 10px 4px;
+  }
+}
+
+@media all and (min-width: 769px) {
+  .lnk {
+    font-size: 1rem;
+  }
+}
+</style>

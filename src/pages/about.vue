@@ -3,10 +3,12 @@
     <section class="section">
       <div class="container">
         <div class="content">
-          <h2 class="title">About</h2>
+          <h2 class="title">
+            About
+          </h2>
           <div v-for="about in data.abouts" :key="about.id" class="about">
             <div class="thmb">
-              <img :src="about.icon.url" />
+              <img :src="about.icon.url">
             </div>
             <p class="name">
               {{ about.name }}
@@ -59,43 +61,6 @@
   </div>
 </template>
 
-<style scoped>
-.name {
-  text-align: center;
-}
-.description {
-  white-space: pre-wrap;
-}
-.thmb {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  margin: 0 auto;
-}
-.thmb > img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  clip-path: circle(50%);
-}
-.tags {
-  display: flex;
-  align-items: center;
-  filter: drop-shadow(0 3px 8px var(--main-shadow));
-}
-@media screen and (min-width: 1024px) {
-  .thmb {
-    margin: 0;
-  }
-  .name {
-    text-align: initial;
-  }
-}
-</style>
-
 <script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
 
@@ -140,3 +105,40 @@ const { data } = await useAsyncData(async () => {
   }
 })
 </script>
+
+<style scoped>
+.name {
+  text-align: center;
+}
+.description {
+  white-space: pre-wrap;
+}
+.thmb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+}
+.thmb > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(50%);
+}
+.tags {
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 3px 8px var(--main-shadow));
+}
+@media screen and (min-width: 1024px) {
+  .thmb {
+    margin: 0;
+  }
+  .name {
+    text-align: initial;
+  }
+}
+</style>
