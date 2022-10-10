@@ -1,10 +1,10 @@
-import { colors } from "~/common/color"
 import Zdog from "zdog"
+import { colors } from "~/common/color"
 
 export const makeSakana = (selector, zoom, drag) => {
   const illo = new Zdog.Illustration({
     element: selector,
-    zoom: zoom,
+    zoom,
     translate: { x: -30 },
     dragRotate: drag,
   })
