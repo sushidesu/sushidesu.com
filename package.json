@@ -25,13 +25,15 @@
     "zdog": "^1.1.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.10.0",
-    "@typescript-eslint/parser": "^4.10.0",
-    "eslint": "^7.16.0",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-vue": "^7.3.0",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3",
-    "vue-eslint-parser": "^7.3.0"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.6",
+    "webpack": "^5.74.0"
   }
 }

@@ -1,12 +1,13 @@
-import { colors } from "~/common/color"
+/* eslint-disable */
 import Zdog from "zdog"
+import { colors } from "~/common/color"
 
 const main = colors.body
 
 export const makeUsagi = (selector, zoom, drag) => {
   const illo = new Zdog.Illustration({
     element: selector,
-    zoom: zoom,
+    zoom,
     dragRotate: drag,
     translate: { y: 40 },
   })

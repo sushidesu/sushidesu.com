@@ -2,29 +2,18 @@
   <section class="section">
     <div class="container">
       <div class="titles">
-        <h2 class="title">
-          Works
-        </h2>
-        <p class="subtitle is-6 has-text-grey">
-          つくったもの
-        </p>
+        <h2 class="title">Works</h2>
+        <p class="subtitle is-6 has-text-grey">つくったもの</p>
       </div>
 
       <ul class="works">
-        <li
-          v-for="app in apps"
-          :key="app.id"
-          class="work"
-        >
+        <li v-for="app in apps" :key="app.id" class="work">
           <article>
             <div class="image-wrapper">
-              <img :src="app.screenshots[0].url">
+              <img :src="app.screenshots[0].url" />
             </div>
             <div class="content">
-              <h3
-                v-if="app.link"
-                class="title is-4"
-              >
+              <h3 v-if="app.link" class="title is-4">
                 <a
                   class="flex items-center"
                   target="_blank"
@@ -32,13 +21,12 @@
                   :href="app.link"
                 >
                   <span>{{ app.title }}</span>
-                  <span class="i-fa-solid-external-link-alt inline-block icon" />
+                  <span
+                    class="i-fa-solid-external-link-alt inline-block icon"
+                  />
                 </a>
               </h3>
-              <h3
-                v-else
-                class="title is-4"
-              >
+              <h3 v-else class="title is-4">
                 {{ app.title }}
               </h3>
               <div class="tags">
@@ -71,6 +59,56 @@
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import { graphQLClient, gql } from "../api"
+
+type Asset = {
+  id: string
+  url: string
+}
+
+type Tag = {
+  id: string
+  title: string
+}
+
+type App = {
+  id: string
+  title: string
+  tags: Tag[]
+  description: string
+  link: string
+  source: string
+  screenshots: Asset[]
+}
+
+const client = graphQLClient()
+
+const { data: apps } = await useAsyncData(async () => {
+  const query = gql`
+    {
+      apps {
+        id
+        title
+        tags {
+          id
+          title
+        }
+        screenshots {
+          id
+          url
+        }
+        description
+        link
+        source
+      }
+    }
+  `
+  const { apps } = await client.request<{ apps: App[] }>(query)
+  return apps
+})
+</script>
 
 <style scoped>
 .titles {
@@ -141,53 +179,3 @@
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.08);
 }
 </style>
-
-<script lang="ts" setup>
-import { graphQLClient, gql } from "../api"
-
-type App = {
-  id: string
-  title: string
-  tags: Tag[]
-  description: string
-  link: string
-  source: string
-  screenshots: Asset[]
-}
-
-type Asset = {
-  id: string
-  url: string
-}
-
-type Tag = {
-  id: string
-  title: string
-}
-
-const client = graphQLClient()
-
-const { data: apps } = await useAsyncData(async () => {
-  const query = gql`
-    {
-      apps {
-        id
-        title
-        tags {
-          id
-          title
-        }
-        screenshots {
-          id
-          url
-        }
-        description
-        link
-        source
-      }
-    }
-  `
-  const { apps } = await client.request<{ apps: App[] }>(query)
-  return apps
-})
-</script>
