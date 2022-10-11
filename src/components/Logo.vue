@@ -1,20 +1,19 @@
 <template>
-  <canvas width="60" height="60" class="logo-canvas" />
+  <canvas ref="canvas" width="60" height="60" />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { makeNeko } from "~/zdog/neko.js"
+import { useAnimal } from "~/hooks/useAnimal"
 
-const neko = ref()
+const canvas = ref()
 
-onMounted(() => {
-  neko.value = makeNeko(".logo-canvas", 0.2, true)
-  const animate = () => {
-    neko.value.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
-  neko.value.rotate.y -= 0.2
-  neko.value.rotate.x -= 0.2
-  animate()
-})
+const maker = () => {
+  const neko = makeNeko(canvas.value, 0.2, true)
+  neko.rotate.y -= 0.2
+  neko.rotate.x -= 0.2
+  return neko
+}
+
+useAnimal(maker)
 </script>

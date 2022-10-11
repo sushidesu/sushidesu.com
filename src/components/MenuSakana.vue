@@ -4,22 +4,14 @@
 
 <script lang="ts" setup>
 import { makeSakana } from "~/zdog/sakana.js"
+import { useAnimalSync } from "~/hooks/useAnimal"
 
 const props = defineProps<{ zoom?: number }>()
 const zoom = props.zoom ?? 1
 
 const app = useNuxtApp()
 const canvas = ref()
-const sakana = ref()
 
-watchEffect(() => {
-  if (sakana.value) {
-    sakana.value.rotate.set(app.$rotate)
-    sakana.value.updateRenderGraph()
-  }
-})
-
-onMounted(() => {
-  sakana.value = makeSakana(canvas.value, 0.14 * zoom, true)
-})
+const maker = () => makeSakana(canvas.value, 0.14 * zoom, true)
+useAnimalSync(maker, () => app.$rotate)
 </script>

@@ -23,7 +23,7 @@ const props = defineProps<{
 
 .lnk {
   font-weight: bold;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
 }
 
 .icon {
