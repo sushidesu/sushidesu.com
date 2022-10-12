@@ -4,16 +4,27 @@
 
 <script lang="ts" setup>
 import { makeNeko } from "~/zdog/neko.js"
-import { useAnimal } from "~/hooks/useAnimal"
-
 const canvas = ref()
 
-const maker = () => {
-  const neko = makeNeko(canvas.value, 0.2, true)
+let neko
+let req
+
+onMounted(() => {
+  neko = makeNeko(canvas.value, 0.2, true)
   neko.rotate.y -= 0.2
   neko.rotate.x -= 0.2
-  return neko
+})
+
+const animate = () => {
+  neko.updateRenderGraph()
+  req = requestAnimationFrame(animate)
 }
 
-useAnimal(maker)
+onMounted(() => {
+  neko.updateRenderGraph()
+})
+
+onUnmounted(() => {
+  cancelAnimationFrame(req)
+})
 </script>

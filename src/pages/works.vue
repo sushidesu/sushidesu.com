@@ -15,14 +15,13 @@
             <div class="content">
               <h3 v-if="app.link" class="title is-5">
                 <a
-                  class="flex items-center"
                   target="_blank"
                   rel="nofollow noopener"
                   :href="app.link"
                 >
                   <span>{{ app.title }}</span>
                   <span
-                    class="i-fa-solid-external-link-alt inline-block icon"
+                    class="i-fa-solid-external-link-alt inline-block icon mt"
                   />
                 </a>
               </h3>
