@@ -1,12 +1,16 @@
 <template>
   <div class="site-all">
-    <NavBar class="nav-bar" />
+    <NavBar v-once class="nav-bar" />
     <main class="main">
       <slot />
     </main>
-    <MenuBar class="menu-bar" />
+    <MenuBar v-if="router.path === '/'" class="menu-bar" />
   </div>
 </template>
+
+<script lang="ts" setup>
+const router = useRoute()
+</script>
 
 <style>
 *,
@@ -18,9 +22,6 @@
 
 .menu-bar {
   padding: 20px;
-  border-radius: 0 0px 14px 14px;
-  background-color: rgba(242, 255, 252, 0.94);
-  border-top: 1px solid var(--main);
   margin: 0;
 }
 
@@ -31,15 +32,20 @@
 html {
   background-color: var(--main);
 }
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+}
 </style>
 
 <style scoped>
 .site-all {
   background-color: var(--white);
+  min-height: calc(100vh - 16px);
+  min-height: calc(100dvh - 16px);
+  margin: 8px 10px;
   border-radius: 14px;
-  margin: 8px 14px;
-  padding-bottom: 2px;
-  min-height: 98vh;
   display: flex;
   flex-direction: column;
 }

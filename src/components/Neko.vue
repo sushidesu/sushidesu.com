@@ -1,35 +1,18 @@
 <template>
   <div>
     <canvas ref="canvas" width="320" height="320" class="neko-canvas" />
-    <!-- <input v-model="neko.rotate.x" /> -->
   </div>
 </template>
-<script setup>
+<script lang="ts" setup>
 import { makeNeko } from "~/zdog/neko.js"
+import { useAnimal } from "~/hooks/useAnimal"
 
 const app = useNuxtApp()
 
 const canvas = ref()
-const neko = ref()
+const maker = () => makeNeko(canvas.value, 1, true)
 
-watch(
-  neko,
-  (neko) => {
-    app.$guriguri(neko.rotate)
-  },
-  {
-    deep: true,
-  }
-)
-
-onMounted(() => {
-  neko.value = makeNeko(canvas.value, 1, true)
-  const animate = () => {
-    neko.value.updateRenderGraph()
-    requestAnimationFrame(animate)
-  }
-  animate()
-})
+useAnimal(maker, (r) => app.$guriguri(r))
 </script>
 
 <style scoped>
