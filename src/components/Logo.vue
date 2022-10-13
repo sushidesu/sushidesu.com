@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvas" width="60" height="60" />
+  <canvas ref="canvas" class="cursor-pointer" width="60" height="60" />
 </template>
 
 <script lang="ts" setup>
@@ -13,6 +13,7 @@ onMounted(() => {
   neko = makeNeko(canvas.value, 0.2, true)
   neko.rotate.y -= 0.2
   neko.rotate.x -= 0.2
+  neko.updateRenderGraph()
 })
 
 const animate = () => {
@@ -21,7 +22,7 @@ const animate = () => {
 }
 
 onMounted(() => {
-  neko.updateRenderGraph()
+  req = requestAnimationFrame(animate)
 })
 
 onUnmounted(() => {

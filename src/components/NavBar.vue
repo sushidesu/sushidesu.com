@@ -2,7 +2,7 @@
   <nav class="navbar is-spaced">
     <div class="navbar-brand items-center">
       <div class="navbar-item">
-        <Logo class="logo" />
+        <Logo v-once />
         <NuxtLink to="/">
           <span class="subtitle">sushidesu.com</span>
         </NuxtLink>
@@ -14,25 +14,25 @@
         <MenuItems class="dropdown-menu dropdown-content">
           <MenuItem v-slot="{ close }">
             <NuxtLink class="dropdown-item" to="/" @click="close">
-              <MenuNeko :zoom="0.8" />
+              <MenuNekoLight :zoom="0.8" />
               <p>Home</p>
             </NuxtLink>
           </MenuItem>
           <MenuItem v-slot="{ close }">
             <NuxtLink class="dropdown-item" to="/about" @click="close">
-              <MenuKuma :zoom="0.8" />
+              <MenuKumaLight :zoom="0.8" />
               <p>About</p>
             </NuxtLink>
           </MenuItem>
           <MenuItem v-slot="{ close }">
             <NuxtLink class="dropdown-item" to="/works" @click="close">
-              <MenuUsagi :zoom="0.8" />
+              <MenuUsagiLight :zoom="0.8" />
               <p>Works</p>
             </NuxtLink>
           </MenuItem>
           <MenuItem v-slot="{ close }">
             <NuxtLink class="dropdown-item" to="/contact" @click="close">
-              <MenuSakana :zoom="0.8" />
+              <MenuSakanaLight :zoom="0.8" />
               <p>Contact</p>
             </NuxtLink>
           </MenuItem>
@@ -44,16 +44,16 @@
         <div class="navbar-item">
           <div class="flex gap-2">
             <MenuLink text="Home" path="/">
-              <MenuNeko />
+              <MenuNekoLight />
             </MenuLink>
             <MenuLink text="About" path="/about">
-              <MenuKuma />
+              <MenuKumaLight />
             </MenuLink>
             <MenuLink text="Works" path="/works">
-              <MenuUsagi />
+              <MenuUsagiLight />
             </MenuLink>
             <MenuLink text="Contact" path="/contact">
-              <MenuSakana />
+              <MenuSakanaLight />
             </MenuLink>
           </div>
         </div>
@@ -70,9 +70,6 @@ const isHome = computed(() => route.path === "/")
 </script>
 
 <style scoped>
-.logo {
-  cursor: pointer;
-}
 .navbar-burger {
   border-radius: 14px;
   margin-right: 0.8rem;

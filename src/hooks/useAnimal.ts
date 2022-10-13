@@ -61,3 +61,15 @@ export const useAnimalSync = (maker: () => Animal, getRotate: () => Rotate) => {
     cancelAnimationFrame(req)
   })
 }
+
+export const useAnimalSyncOnce = (
+  maker: () => Animal,
+  getRotate: () => Rotate
+) => {
+  // render
+  onMounted(() => {
+    const animal = maker()
+    animal.rotate.set(getRotate())
+    animal.updateRenderGraph()
+  })
+}

@@ -7,18 +7,14 @@
       </div>
 
       <ul class="works">
-        <li v-for="app in apps" :key="app.id" class="h-full">
+        <li v-for="app in apps" v-once :key="app.id" class="h-full">
           <article class="work">
             <div class="image-wrapper">
               <img :src="app.screenshots[0].url" />
             </div>
             <div class="content">
               <h3 v-if="app.link" class="title is-5">
-                <a
-                  target="_blank"
-                  rel="nofollow noopener"
-                  :href="app.link"
-                >
+                <a target="_blank" rel="nofollow noopener" :href="app.link">
                   <span>{{ app.title }}</span>
                   <span
                     class="i-fa-solid-external-link-alt inline-block icon mt"

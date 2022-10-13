@@ -1,6 +1,6 @@
 <template>
   <div class="site-all">
-    <NavBar class="nav-bar" />
+    <NavBar v-once class="nav-bar" />
     <main class="main">
       <slot />
     </main>
