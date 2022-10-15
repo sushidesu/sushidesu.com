@@ -22,12 +22,14 @@
     "bulma": "^0.9.4",
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
+    "marked": "^4.1.1",
     "nuxt": "3.0.0-rc.11",
     "vue": "^3.2.40",
     "zdog": "^1.1.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "@types/marked": "^4.0.7",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
     "eslint": "^8.25.0",
