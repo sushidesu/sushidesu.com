@@ -11,9 +11,10 @@
             <p class="name">
               {{ about.name }}
             </p>
-            <p class="description">
+            <p class="description" v-if="about.descriptionMd === null">
               {{ about.description }}
             </p>
+            <div class="content" v-html="about.descriptionMd" />
             <div class="tags">
               <a
                 v-if="about.githubLink"
@@ -61,6 +62,7 @@
 
 <script lang="ts" setup>
 import { graphQLClient, gql } from "../api"
+import { marked } from "marked"
 
 type Asset = {
   id: string
@@ -71,6 +73,7 @@ type About = {
   id: string
   name: string
   description: string
+  descriptionMd: string
   icon: Asset
   githubLink?: string
   twitterLink?: string
@@ -86,6 +89,7 @@ const { data } = await useAsyncData(async () => {
         id
         name
         description
+        descriptionMd
         icon {
           id
           url
@@ -99,7 +103,10 @@ const { data } = await useAsyncData(async () => {
   const { abouts } = await client.request<{ abouts: About[] }>(query)
 
   return {
-    abouts,
+    abouts: abouts.map(about => ({
+      ...about,
+      descriptionMd: marked(about.descriptionMd)
+    })),
   }
 })
 </script>
