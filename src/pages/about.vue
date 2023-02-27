@@ -41,6 +41,17 @@
                 <span>Twitter</span>
               </a>
               <a
+                class="tag is-link is-light"
+                href="https://zenn.dev/sushidesu"
+                target="_blank"
+                rel="nofollow noopener"
+              >
+                <span class="icon">
+                  <div class="i-fa6-solid-bolt" />
+                </span>
+                <span>Zenn</span>
+              </a>
+              <a
                 v-if="about.qiitaLink"
                 class="tag is-success is-light"
                 :href="about.qiitaLink"
