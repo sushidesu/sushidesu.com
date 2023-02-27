@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^0.0.0-insiders.0e147a0",
-    "@iconify/json": "^2.1.119",
+    "@iconify/json": "^2.2.27",
     "@nuxtjs/google-gtag": "^1.0.4",
     "@unocss/nuxt": "^0.45.28",
     "bulma": "^0.9.4",
