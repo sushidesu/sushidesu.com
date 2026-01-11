@@ -222,6 +222,7 @@ const sortedApps = computed(() => {
 }
 .works--timeline {
   --timeline-item-gap: 28px;
+  --timeline-content-max: 780px;
   display: flex;
   flex-direction: column;
   gap: var(--timeline-item-gap);
@@ -268,9 +269,10 @@ const sortedApps = computed(() => {
     (var(--timeline-meta-height) - var(--timeline-dot-size)) / 2
   );
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-columns: 24px minmax(0, var(--timeline-content-max));
   column-gap: 16px;
   align-items: start;
+  justify-content: center;
   position: relative;
 }
 .timeline-rail {
@@ -308,6 +310,8 @@ const sortedApps = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+  max-width: var(--timeline-content-max);
 }
 .work--timeline {
   padding: 0.9rem 1rem;
