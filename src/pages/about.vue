@@ -11,7 +11,7 @@
             <p class="name">
               {{ about.name }}
             </p>
-            <p class="description" v-if="about.descriptionMd === null">
+            <p v-if="about.descriptionMd === null" class="description">
               {{ about.description }}
             </p>
             <div class="content" v-html="about.descriptionMd" />
@@ -72,8 +72,8 @@
 </template>
 
 <script lang="ts" setup>
-import { graphQLClient, gql } from "../api"
 import { marked } from "marked"
+import { graphQLClient, gql } from "../api"
 
 type Asset = {
   id: string
@@ -114,9 +114,9 @@ const { data } = await useAsyncData(async () => {
   const { abouts } = await client.request<{ abouts: About[] }>(query)
 
   return {
-    abouts: abouts.map(about => ({
+    abouts: abouts.map((about) => ({
       ...about,
-      descriptionMd: marked(about.descriptionMd)
+      descriptionMd: marked(about.descriptionMd),
     })),
   }
 })
