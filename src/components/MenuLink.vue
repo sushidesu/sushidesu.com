@@ -1,6 +1,11 @@
 <template>
   <div class="level-item has-text-centered">
-    <NuxtLink :to="props.path" class="item button is-primary is-outlined">
+    <NuxtLink
+      :to="props.path"
+      class="item button is-primary is-outlined"
+      :class="{ 'is-hovered': isActive }"
+      :aria-current="isActive ? 'page' : undefined"
+    >
       <slot />
       <span class="lnk">{{ props.text }}</span>
     </NuxtLink>
@@ -12,6 +17,11 @@ const props = defineProps<{
   text: string
   path: string
 }>()
+
+const route = useRoute()
+const isActive = computed(() =>
+  props.path === "/" ? route.path === "/" : route.path.startsWith(props.path)
+)
 </script>
 
 <style css scoped>
